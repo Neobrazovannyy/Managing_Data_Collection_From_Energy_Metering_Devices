@@ -1,0 +1,14 @@
+2026/03/20 00:34:10 ServerTCP.go:142: =========== START PROGRAM  ===========
+2026/03/20 00:34:10 ServerTCP.go:158: Selected address for listening: 0.0.0.0:5001
+2026/03/20 00:34:10 ServerTCP.go:167: The server works at the host: 192.168.0.107
+2026/03/20 00:34:10 ServerTCP.go:178: Server is listening: 0.0.0.0:5001
+2026/03/20 00:34:22 ServerTCP.go:198: Connect with the client at the address: 192.168.0.107:5001
+2026/03/20 00:34:26 ServerTCP.go:114: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/03/20 00:34:26 ParsePackageMIRTEK.go:223: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/03/20 00:34:37 ServerTCP.go:102: The client has close connect: EOF
+2026/03/20 00:34:39 ServerTCP.go:31: =========== END PROGRAM (SIGINT) ===========
