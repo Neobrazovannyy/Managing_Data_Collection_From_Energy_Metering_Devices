@@ -108,9 +108,9 @@ func main(){
 		} else if choice_package=="d1"{
 			tcp_conn.Write(list_packages[1])
 		} else if choice_package=="d2"{
-			tcp_conn.Write(list_packages[3])
+			tcp_conn.Write(list_packages[2])
 		} else if choice_package=="ser"{
-			tcp_conn.Write(list_packages[4])
+			tcp_conn.Write(list_packages[3])
 		} else if choice_package=="stop"{
 			tcp_conn.Close()
 			return;

@@ -121,7 +121,7 @@ func (c_console *ColorConsole) CheckSumCrc8PackageMT(msg_package []byte) error{
 func AddDescriptionLogger(logger *log.Logger, log_description *string, description string, val any){
 	if logger==nil{ return }
 
-	*log_description+=fmt.Sprintf("\t%v: %v\n", description, val)
+	*log_description+=fmt.Sprintf("\t%s: %v\n", description, val)
 }
 
 //__________________________________________________________________________
@@ -197,6 +197,8 @@ func (c_console *ColorConsole) ParseM2MPackage(msg_package []byte, num_byte int,
 	//Description for logs
 	m2m_log_description:="M2M-packet data parsed:\n"
 
+	fmt.Printf("%s\n", c_console.chapter("=============== M2M-packet ==============="))
+
 	// ParsingM2M | m2m_gateway
 	/*----- Gateway = byte[0] + byte[1] + byte[2] + byte[3] -----*/
 	number_device_hex:= uint32(msg_package[1])<<24 | uint32(msg_package[2])<<16 | uint32(msg_package[3])<<8 | uint32(msg_package[4])
@@ -213,7 +215,7 @@ func (c_console *ColorConsole) ParseM2MPackage(msg_package []byte, num_byte int,
 	/*----- Length = LenH + LenL------*/
 	m2m_len=uint16(msg_package[6])<<8 | uint16(msg_package[7])
 	fmt.Printf("%s %d\n", c_console.label("Number of bytes allocate to data:"), m2m_len)
-	m2m_log_description+=fmt.Sprintf("\tNumber of bytes allocate to data: %d\n", m2m_len)
+	AddDescriptionLogger(logger, &m2m_log_description, "Number of bytes allocate to data", m2m_len)
 
 
 	// ParsingM2M | m2m_type
@@ -312,6 +314,8 @@ func (c_console *ColorConsole) ParseMTPackageRequest(msg_package []byte, logger 
 	//Description for logs
 	mt_log_description:="MT-packet (request) data parsed:\n"
 
+	fmt.Printf("%s\n", c_console.chapter("=============== MT-packet (request) ==============="))
+
 	// ParsingMT | Request | mt_type
 	/*----- Type -----*/
 	mt_type= uint16(msg_package[0])<<8 | uint16(msg_package[1])
@@ -319,21 +323,21 @@ func (c_console *ColorConsole) ParseMTPackageRequest(msg_package []byte, logger 
 		fmt.Printf("%s %# X\n", c_console.info("Wrong type:"), mt_type)
 	}
 	fmt.Printf("%s %# X\n", c_console.label("Type (water):"), mt_type)
-	mt_log_description+=fmt.Sprintf("\tType (water): %d\n", mt_type)
+	AddDescriptionLogger(logger, &mt_log_description, "Type (water)", mt_type)
 
 
 	// ParsingMT | Request | mt_status
 	/*----- Status(NBIOT) -----*/
 	mt_status=msg_package[2]
 	fmt.Printf("%s %# X\n", c_console.label("Status:"), mt_status)
-	mt_log_description+=fmt.Sprintf("\tStatus: %d\n", mt_status)
+	AddDescriptionLogger(logger, &mt_log_description, "Status", mt_status)
 
 
 	// ParsingMT | Request | mt_pingid
 	/*----- PingInt(NBIOT) -----*/
 	mt_pingid=msg_package[3]
 	fmt.Printf("%s %# X\n", c_console.label("PingInt:"), mt_pingid)
-	mt_log_description+=fmt.Sprintf("\tPingInt: %d\n", mt_pingid)
+	AddDescriptionLogger(logger, &mt_log_description, "PingInt", mt_pingid)
 	
 
 	// ParsingMT | Request | mt_iccid
@@ -342,14 +346,14 @@ func (c_console *ColorConsole) ParseMTPackageRequest(msg_package []byte, logger 
 		mt_iccid+=string(msg_package[i])
 	}
 	fmt.Printf("%s %s\n", c_console.label("ICCID:"), mt_iccid)
-	mt_log_description+=fmt.Sprintf("\tICCID: %s\n", mt_iccid)
+	AddDescriptionLogger(logger, &mt_log_description, "ICCID", mt_iccid)
 
 
 	// ParsingMT | Request | mt_rssi
 	/*----- RSSI -----*/
 	mt_rssi=msg_package[len_msg_package-1]
 	fmt.Printf("%s %d\n", c_console.label("RSSI:"), int8(mt_rssi))
-	mt_log_description+=fmt.Sprintf("\tRSSI: %d\n", int8(mt_rssi))
+	AddDescriptionLogger(logger, &mt_log_description, "RSSI", int8(mt_rssi))
 
 	
 	if logger!=nil{ logger.Print(mt_log_description) }
@@ -399,16 +403,17 @@ func (c_console *ColorConsole) PreparingMTPackage(msg_package []byte, logger *lo
 	return msg_package, nil
 }
 
+
 /*
 	# DOC:
-		func (c_console *ParsePackageMIRTEK.ColorConsole) ParseMTPackageData_Info(msg_package []byte, logger *log.Logger) (uint16, uint16, string, [4]byte)
+		func (c_console *ParsePackageMIRTEK.ColorConsole) ParseMTPackageData_Info(msg_package []byte, logger *log.Logger) (uint16, uint16, string, [4]string, uint8)
 
 	# EXAMPLE OF USE
 		parsMIRTEK:=ParsePackageMIRTEK.NewParsing()
 		...
 		if m2m_type==1{ // type: data
 			...
-			mt_des, mt_sou, mt_comm, mt_stat 
+			mt_des, mt_sou, mt_comm, mt_stat, mt_type_package 
 			:= parsMIRTEK.ParseMTPackageData_Info(m2m_data_stuffing[0:13], logger.Logger)
 			...
 		}
@@ -419,12 +424,12 @@ func (c_console *ColorConsole) PreparingMTPackage(msg_package []byte, logger *lo
 		[1]     Logger     *logger  "Output data"
 
 	# RETURN:
-		Index   Field         Type     Description
-		[0]     Destination   uint16       -
-		[1]     Source        uint16       -
-		[2]     Command       string       -
-		[3]     Status        [4]byte  [status_1, status_2, status_3, status_4]
-		[4]     Type Package  uint8    [1-"Current", 2-"Archival", 3-"Service Information"]
+		Index   Field         Type       Description
+		[0]     Destination   uint16         -
+		[1]     Source        uint16         -
+		[2]     Command       string         -
+		[3]     Status        [4]string  [status_1, status_2, status_3, status_4]
+		[4]     Type Package  uint8      [1-"Current", 2-"Archival", 3-"Service Information"]
 
 	# WORK PACKAGE:
 		________________
@@ -432,11 +437,11 @@ func (c_console *ColorConsole) PreparingMTPackage(msg_package []byte, logger *lo
 		"Transmitting the first 13-bytes of the MT-packet after the stuffing bytes.
 		To not including: 0x(01||02||03)"
 */
-func (c_console *ColorConsole) ParseMTPackageData_Info(msg_package []byte, logger *log.Logger) (uint16, uint16, string, [4]byte, uint8){
+func (c_console *ColorConsole) ParseMTPackageData_Info(msg_package []byte, logger *log.Logger) (uint16, uint16, string, [4]string, uint8){
 	var mt_destination uint16
 	var mt_source uint16
 	var mt_command string
-	var mt_status [4]byte
+	var mt_status [4]string
 	var mt_type_package uint8
 	//Description for logs
 	mt_log_description:="MT-packet (data, part: \"info\") data parsed:\n"
@@ -448,37 +453,38 @@ func (c_console *ColorConsole) ParseMTPackageData_Info(msg_package []byte, logge
 	/*----- Destination (получатель) -----*/
 	mt_destination = uint16(msg_package[4])<<8 | uint16(msg_package[5])
 	fmt.Printf("%s %d\n", c_console.label("Destination:"), mt_destination)
-	mt_log_description+=fmt.Sprintf("\tDestination: %d\n", mt_destination)
+	AddDescriptionLogger(logger, &mt_log_description, "Destination", mt_destination)
 
 
 	// ParsingMT | Data Info | mt_source
 	/*----- Source (источник) -----*/
 	mt_source= uint16(msg_package[6])<<8 | uint16(msg_package[7])
 	fmt.Printf("%s %d\n", c_console.label("Source:"), mt_source)
-	mt_log_description+=fmt.Sprintf("\tSource: %d\n", mt_source)
+	AddDescriptionLogger(logger, &mt_log_description, "Source", mt_source)
 
 
 	// ParsingMT | Data Info | mt_command
 	/*----- Command -----*/
 	mt_command=fmt.Sprintf("%x", msg_package[8])
 	fmt.Printf("%s %x\n", c_console.label("Command:"), mt_command)
-	mt_log_description+=fmt.Sprintf("\tCommand: %s\n", mt_command)
+	AddDescriptionLogger(logger, &mt_log_description, "Command", mt_command)
 
 
-	// ParsingMT | Data Info | mt_status_(1..4)
+	// ParsingMT | Data Info | mt_status[0..3]
 	/*----- Status_(1..4) -----*/
 	for i_stat,j_msg:=0,9; j_msg<=12; i_stat,j_msg=i_stat+1,j_msg+1{
-		mt_status[i_stat]=msg_package[j_msg]
+		mt_status[i_stat]=fmt.Sprintf("%x", msg_package[j_msg])
 	}
-	mt_status[0]=msg_package[9]
+	mt_status[0]=fmt.Sprintf("%x", msg_package[9])
 	switch mt_status[0]{
-	case 0x0A: fmt.Printf("%s\n", c_console.info("Device: hot (0A)"))
-	case 0x09: fmt.Printf("%s\n", c_console.info("Device: cold (09)"))
-	case 0x0B: fmt.Printf("%s\n", c_console.info("Device: gas (0B)"))
+	case "0A": fmt.Printf("%s\n", c_console.info("Device: hot (0A)"))
+	case "09": fmt.Printf("%s\n", c_console.info("Device: cold (09)"))
+	case "0B": fmt.Printf("%s\n", c_console.info("Device: gas (0B)"))
 	default: fmt.Printf("%s\n", c_console.info("Device: hot (0A)"))
 	}
 	fmt.Printf("%s %s\n", c_console.label("Status:"), mt_status)
-	mt_log_description+=fmt.Sprintf("\tStatus: %s\n", mt_status)
+	AddDescriptionLogger(logger, &mt_log_description, "Status", mt_status)
+	// mt_log_description+=fmt.Sprintf("\tStatus: %s\n", mt_status) //?
 
 	
 	// ParsingMT | mt_type_package
@@ -500,7 +506,7 @@ func (c_console *ColorConsole) ParseMTPackageData_Info(msg_package []byte, logge
 		mt_type_package=3
 	}
 	fmt.Printf("%s %x (%s)\n", c_console.label("Type Package:"), mt_type_package, name_type_package)
-	mt_log_description+=fmt.Sprintf("\tType Package: %s\n", name_type_package)
+	AddDescriptionLogger(logger, &mt_log_description, "Type Package", name_type_package)
 
 
 	if logger!=nil{ logger.Print(mt_log_description) }
@@ -508,15 +514,39 @@ func (c_console *ColorConsole) ParseMTPackageData_Info(msg_package []byte, logge
 }
 
 
-//
-// ТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТихо блять
-//
+/*
+	# DOC:
+		func (c_console *ParsePackageMIRTEK.ColorConsole) ParseMTPackageData_CurrentOrArchivalIndication(type_data_indication string, msg_package []byte, logger *log.Logger) (string, string, string)
 
+	# EXAMPLE OF USE
+		parsMIRTEK:=ParsePackageMIRTEK.NewParsing()
+		...
+		if mt_type_package==1{ //Current
+			mt_indication, mt_battery_charge, mt_comm_level =parsMIRTEK.ParseMTPackageData_CurrentOrArchivalIndication("current", m2m_data_stuffing[25:], &logger)
+			...
+		}
 
-func (c_console *ColorConsole) ParseMTPackageData_CurrentOrArchivalIndication(type_data_indication string, msg_package []byte, logger *log.Logger) (string, string, int){
+	# GET:
+		Index   Field       Type      Description
+		[0]     Type Data   string    "Type data indication"
+		[1]     Package     []byte    m2m_data[25:]
+		[2]     Logger      *logger   "Output data"
+
+	# RETURN:
+		Index   Field               Type     Description
+		[0]     Indication          string       -
+		[1]     BatteryCharge       string       -
+		[2]     CommunicationLevel  string       -
+
+	# WORK PACKAGE:
+		________________
+		|0x43, ..., 0x55| -->() 
+		"All bytes of the MT-package after the serial number"
+*/
+func (c_console *ColorConsole) ParseMTPackageData_CurrentOrArchivalIndication(type_data_indication string, msg_package []byte, logger *log.Logger) (string, string, string){
 	var mt_indication string	 //ASCII
 	var mt_battery_charge string //ASCII
-	var mt_comm_level int64
+	var mt_comm_level int64		 //return: string()
 	//Description for logs
 	mt_log_description:=fmt.Sprintf("MT-packet (data, part: \"%s indication\") data parsed:\n", type_data_indication)
 
@@ -533,9 +563,9 @@ func (c_console *ColorConsole) ParseMTPackageData_CurrentOrArchivalIndication(ty
 		fmt.Printf("%d) %#x - %s\n", i, msg_package[i], string(msg_package[i]))
 		mt_indication+=string(msg_package[i])
 	}
-	form_text:=fmt.Sprintf("%s indication: ", type_data_indication)
-	fmt.Printf("%s %s\n", c_console.label(form_text), mt_indication)
-	mt_log_description+=fmt.Sprintf("\t%s: %s\n", form_text, mt_indication)
+	form_text:=fmt.Sprintf("%s indication", type_data_indication)
+	fmt.Printf("%s %s\n", c_console.label(form_text + ": "), mt_indication)
+	AddDescriptionLogger(logger, &mt_log_description, form_text, mt_indication)
 	
 
 	// ParsingMT | Data Indication | 0x56 (V)
@@ -550,7 +580,7 @@ func (c_console *ColorConsole) ParseMTPackageData_CurrentOrArchivalIndication(ty
 		mt_battery_charge+=string(msg_package[i])
 	}
 	fmt.Printf("%s %s\n", c_console.label("Battery charge:"), mt_battery_charge)
-	mt_log_description+=fmt.Sprintf("\tBattery charge: %s\n", mt_battery_charge)
+	AddDescriptionLogger(logger, &mt_log_description, "Battery charge", mt_battery_charge)
 	
 
 	// ParsingMT | Data Indication | 0x52 (R) or 0x50 (P)
@@ -568,20 +598,50 @@ func (c_console *ColorConsole) ParseMTPackageData_CurrentOrArchivalIndication(ty
 	}
 	mt_comm_level-=256
 	fmt.Printf("%s %s-256=%d\n", c_console.label("Communication level:"), mt_comm_level_str, mt_comm_level)
-	mt_log_description+=fmt.Sprintf("\tCommunication level: %d\n", mt_comm_level)
+	AddDescriptionLogger(logger, &mt_log_description, "Communication level", mt_comm_level)
 
-	
+
 	if logger!=nil{ logger.Print(mt_log_description) }
-	return mt_indication, mt_battery_charge, int(mt_comm_level)
+	return mt_indication, mt_battery_charge, strconv.FormatInt(mt_comm_level, 10)
 }
 
 
+/*
+	# DOC:
+		func (c_console *ParsePackageMIRTEK.ColorConsole) ParseMTPackageData_ServiceInformation(msg_package []byte, logger *log.Logger) (string, string, int, int, float32, string, string, string)
 
+	# EXAMPLE OF USE
+		parsMIRTEK:=ParsePackageMIRTEK.NewParsing()
+		...
+		if mt_type_package==3{ //Service Information
+			mt_serial_number, mt_production_date, mt_rssi, mt_rsrp, mt_rsrq, mt_software_version, mt_type_processor, mt_base_station_id=parsMIRTEK.ParseMTPackageData_ServiceInformation(m2m_data_stuffing[15:], &logger)
+			...
+		}
 
-// <-- |0x73, 0x55, ..., 0x55|
-func (c_console *ColorConsole) ParseMTPackageData_ServiceInformation(msg_package []byte) (){
+	# GET:
+		Index   Field     Type      Description
+		[0]     Package   []byte    m2m_data[15:]
+		[1]     Logger    *logger   "Output data"
+
+	# RETURN:
+		Index   Field             Type      Description
+		[0]     SerialNumber      string      ASCII
+		[1]     ProductionDate    string        -
+		[2]     RSSI  string      int           -
+		[3]     RSRP  string      int           -
+		[4]     RSRQ  string      float32       -
+		[5]     SoftwareVersion   string        -
+		[6]     TypeProcessor     string        -
+		[7]     BaseStationId     string        -
+
+	# WORK PACKAGE:
+		________________
+		|0x43, ..., 0x55| -->() 
+		"All bytes of the MT-package after the serial number"
+*/
+func (c_console *ColorConsole) ParseMTPackageData_ServiceInformation(msg_package []byte, logger *log.Logger) (string, string, int, int, float32, string, string, string){
 	current_byte:=0
-	var mt_first_num int
+	var mt_serial_number string	//ASCII
 	var mt_production_date string
 	var mt_rssi int
 	var mt_rsrp int
@@ -589,27 +649,42 @@ func (c_console *ColorConsole) ParseMTPackageData_ServiceInformation(msg_package
 	var mt_software_version string
 	var mt_type_processor string
 	var mt_base_station_id string //OR mt_base_station_id_hex
+	//Description for logs
+	mt_log_description:="MT-packet (data, part: \"service information\") data parsed:\n"
+
 	
 	fmt.Printf("%s\n", c_console.chapter("---------- Part: \"Service Information\" ----------"))
 
-	mt_service_information:=msg_package[:len(msg_package)-2]
-	fmt.Printf("%# x\n", mt_service_information)
+	mt_service_information:=msg_package[10:len(msg_package)-2]
+
+	
+	// ParsingMT | mt_serial_number
+	/*----- Serial Number -----*/
+	for i:=0;i<10;i++{
+		// fmt.Printf("%d) %#x - %s\n", i, msg_package[i], string(msg_package[i]))
+		mt_serial_number+=string(msg_package[i])
+	}
+
 
 	// ParsingMT | Service Information | mt_first_num
 	/*----- The first three digits of the serial number -----*/
-	mt_first_num=(int(mt_service_information[current_byte]) & 0x7f) + ((int(mt_service_information[current_byte+1]) & 0x7f)<<7)
+	mt_first_num:=(int(mt_service_information[current_byte]) & 0x7f) + ((int(mt_service_information[current_byte+1]) & 0x7f)<<7)
 	fmt.Printf("%s %d\n", c_console.label("The first three digits of the serial number:"), mt_first_num)
 	current_byte=+2
+
+	mt_serial_number=fmt.Sprintf("%d%s", mt_first_num, mt_serial_number)
+	fmt.Printf("%s %s\n", c_console.label("Serial Number:"), mt_serial_number)
+	AddDescriptionLogger(logger, &mt_log_description, "Serial Number", mt_serial_number)
 
 
 	// ParsingMT | Service Information | mt_production_date
 	/*----- Production date, (number of days since 01.01.2000) -----*/
 	start_date:=time.Date(2000, 1, 1, 23, 0, 0, 0, time.UTC)
 	date_offset:=(int(mt_service_information[current_byte]) & 0x7f) + ((int(mt_service_information[current_byte+1]) & 0x7f)>>7)
-	// fmt.Printf("Date offset: %d\n", date_offset)
 	mt_production_date=start_date.AddDate(0, 0, date_offset).Format("2006-1-2")
 	fmt.Printf("%s %s (offset=%d)\n", c_console.label("Production date:"), mt_production_date, date_offset)
 	current_byte+=2
+	AddDescriptionLogger(logger, &mt_log_description, "Production date", mt_production_date)
 	
 
 	// ParsingMT | Service Information | mt_rssi, mt_rsrp, mt_rsrq
@@ -624,14 +699,17 @@ func (c_console *ColorConsole) ParseMTPackageData_ServiceInformation(msg_package
 	mt_rsrq= -19.5 + (float32((int(mt_service_information[current_byte+2])) & 0x7f) * 0.5)
 	fmt.Printf("%s %d;\n%s %d;\n%s %f.\n", c_console.label("RSSI:"), mt_rssi, c_console.label("RSRP:"), mt_rsrp, c_console.label("RSRQ:"), mt_rsrq)
 	current_byte+=3
+	AddDescriptionLogger(logger, &mt_log_description, "RSSI", mt_rssi)
+	AddDescriptionLogger(logger, &mt_log_description, "RSRP", mt_rsrp)
+	AddDescriptionLogger(logger, &mt_log_description, "RSRQ", mt_rsrq)
 
 
 	// ParsingMT | Service Information | mt_software_version
 	/*----- Software Version -----*/
 	mt_software_version=fmt.Sprintf("%d.%d", (mt_service_information[current_byte+1] & 0x7f), (mt_service_information[current_byte] & 0x7f))
-	// mt_software_version, err:=strconv.ParseFloat(mt_software_version_str, 64)
 	fmt.Printf("%s %s\n", c_console.label("Software Version:"), mt_software_version)
 	current_byte+=2
+	AddDescriptionLogger(logger, &mt_log_description, "Software Version", mt_software_version)
 
 
 	// ParsingMT | Service Information | mt_type_processor
@@ -639,6 +717,7 @@ func (c_console *ColorConsole) ParseMTPackageData_ServiceInformation(msg_package
 	mt_type_processor=string(mt_service_information[current_byte])
 	fmt.Printf("%s %s (%#x)\n", c_console.label("Processor type (first letter):"), mt_type_processor, mt_service_information[current_byte])
 	current_byte+=1
+	AddDescriptionLogger(logger, &mt_log_description, "Processor type (first letter)", mt_type_processor)
 
 
 	// ParsingMT | Service Information | mt_base_station_id_hex
@@ -651,50 +730,9 @@ func (c_console *ColorConsole) ParseMTPackageData_ServiceInformation(msg_package
 
 	mt_base_station_id=fmt.Sprintf("%X", mt_base_station_id_hex)
 	fmt.Printf("%s %s\n", c_console.label("Base station ID:"), mt_base_station_id)
+	AddDescriptionLogger(logger, &mt_log_description, "Base station ID", mt_base_station_id)
 
-}
-
-
-// <-- |0x73, 0x55, ..., 0x55, ?, ?|
-func (c_console *ColorConsole) ParseMTPackageData_Router(msg_package []byte){
-	c_console.CheckSumCrc8PackageMT(msg_package) // !WARRING! return ERROR
-
-	// <-- |0x73, 0x55, ..., 0x55, ?, ?|
-	msg_package=c_console.CheckByteStuffing(msg_package)
-	// --> |0x73, 0x55, ..., 0x55| (after Byte Stuffing)
-
-	// Parse: [0x73, 0x55, ...] (01||02||03) - not included
-	c_console.ParseMTPackageData_Info(msg_package[0:13])
-
-	// ParsingMT | mt_type_package
-	/*----- Type Package -----*/
-	mt_type_package:=uint8(msg_package[13])
-	// 1 - Текущие;
-	// 2 - Архивные;
-	// 3 - Инфо.
-	switch mt_type_package{
-	case 1: fmt.Printf("%s %x (Curent)\n", c_console.label("Type Package:"), mt_type_package)
-	case 2: fmt.Printf("%s %x (Archival)\n", c_console.label("Type Package:"), mt_type_package)
-	case 3: fmt.Printf("%s %x (Service Information)\n", c_console.label("Type Package:"), mt_type_package)
-	}
-
-	// ParsingMT | 0x44 (D)
-	/*----- Separator Byte (D) -----*/
-	fmt.Printf("--%#x--(%s)--\n", string(msg_package[14]), string(msg_package[14]))
-
-	// ParsingMT | mt_serial_number
-	/*----- Serial Number -----*/
-	var mt_serial_number string	 //ASCII
-	for i:=15;i<10+15;i++{ //from 15-byte to 24-byte
-		fmt.Printf("%d) %#x - %s\n", i-14, msg_package[i], string(msg_package[i]))
-		mt_serial_number+=string(msg_package[i])
-	}
-	fmt.Printf("%s %s\n", c_console.label("Serial Number:"),  mt_serial_number)
-
-
-	if mt_type_package==1 || mt_type_package==2{
-		c_console.ParseMTPackageData_CurrentOrArchivalIndication(msg_package[25:])
-	} else { //mt_type_package==3
-		c_console.ParseMTPackageData_ServiceInformation(msg_package[25:])
-	}
+	
+	if logger!=nil{ logger.Print(mt_log_description) }
+	return mt_serial_number, mt_production_date, mt_rssi, mt_rsrp, mt_rsrq, mt_software_version, mt_type_processor, mt_base_station_id 
 }

@@ -244,7 +244,7 @@ func (c_console *ColorConsole) ParseMTPackageData_Info(msg_package []byte){
 		fmt.Printf("%s\n", c_console.info("Device: hot (0A)"))
 	}else if mt_status[0]=="09"{
 		fmt.Printf("%s\n", c_console.info("Device: cold (09)"))
-	}else if mt_status[0]=="0A"{
+	}else if mt_status[0]=="0B"{
 		fmt.Printf("%s\n", c_console.info("Device: gas (0B)"))
 	}else{
 		fmt.Printf("%s\n", c_console.info("Device: hot (0A)"))
@@ -319,7 +319,7 @@ func (c_console *ColorConsole) ParseMTPackageData_ServiceInformation(msg_package
 
 	fmt.Printf("%s\n", c_console.chapter("---------- Part: \"Service Information\" ----------"))
 
-	mt_service_information:=msg_package[:len(msg_package)-2]
+	mt_service_information:=msg_package[10:len(msg_package)-2]
 	fmt.Printf("%# x\n", mt_service_information)
 
 	// ParsingMT | Service Information | mt_first_num
@@ -421,7 +421,7 @@ func (c_console *ColorConsole) ParseMTPackageData_Router(msg_package []byte){
 	if mt_type_package==1 || mt_type_package==2{
 		c_console.ParseMTPackageData_CurrentOrArchivalIndication(msg_package[25:])
 	} else { //mt_type_package==3
-		c_console.ParseMTPackageData_ServiceInformation(msg_package[25:])
+		c_console.ParseMTPackageData_ServiceInformation(msg_package[15:])
 	}
 }
 

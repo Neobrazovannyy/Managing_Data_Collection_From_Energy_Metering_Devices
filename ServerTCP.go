@@ -106,7 +106,7 @@ type dbMTInfo struct{
 	Destination uint16;
 	Source uint16;
 	Command string;	//OR byte, OR uint8
-	Status [4]byte;
+	Status [4]string;
 }
 
 // MT Service Info
@@ -123,10 +123,10 @@ type dbMTServiceInfo struct{
 }
 
 type dbMTIndication struct{
-	TypeData string // "current" or "archival"
+	TypeIndication string // "current" or "archival"
 	Indication string
 	BatteryCharge string
-	CommunicationLevel string
+	CommunicationLevel string // int?
 }
 
 func (logger *LoggerServerTCP) GetDataClient(conn_client net.Conn) {
@@ -197,14 +197,26 @@ func (logger *LoggerServerTCP) GetDataClient(conn_client net.Conn) {
 
 			// Current
 			if mt_type_package==1{
-				m2m_current_indication_db.TypeData="current"
-				parsMIRTEK.ParseMTPackageData_CurrentOrArchivalIndication("current", m2m_data_stuffing[25:], logger.Logger)
+				m2m_current_indication_db.TypeIndication="current"
+				m2m_current_indication_db.Indication,
+				m2m_current_indication_db.BatteryCharge,
+				m2m_current_indication_db.CommunicationLevel=parsMIRTEK.ParseMTPackageData_CurrentOrArchivalIndication("current", m2m_data_stuffing[25:], logger.Logger)
 			// Archival
 			} else if mt_type_package==2{
-				m2m_archival_indication_db.TypeData="archival"
+				m2m_archival_indication_db.TypeIndication="archival"
+				m2m_current_indication_db.Indication,
+				m2m_current_indication_db.BatteryCharge,
+				m2m_current_indication_db.CommunicationLevel=parsMIRTEK.ParseMTPackageData_CurrentOrArchivalIndication("archival", m2m_data_stuffing[25:], logger.Logger)
 			// Service Information
 			} else {
-
+				m2m_service_db.SerialNumber,
+				m2m_service_db.ProductionDate,
+				m2m_service_db.RSSI,
+				m2m_service_db.RSRP,
+				m2m_service_db.RSRQ,
+				m2m_service_db.SoftwareVersion,
+				m2m_service_db.TypeProcessor,
+				m2m_service_db.BaseStationId=parsMIRTEK.ParseMTPackageData_ServiceInformation(m2m_data_stuffing[15:], logger.Logger)
 			}
 			
 		}
@@ -212,7 +224,7 @@ func (logger *LoggerServerTCP) GetDataClient(conn_client net.Conn) {
 	}
 
 	// send db
-	// return
+	return
 }
 
 func main(){
