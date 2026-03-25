@@ -18,18 +18,44 @@ import (
 	"PowerMonitor/ParsePackageMIRTEK"
 )
 
-// type MIRTEKdb struct{
-// 	// M2M-package
-// 	Gateway int;
-// 	// MT-request
-// 	ICCID string;
-// 	// MT-data_Info
-// 	Destination uint16;
-// 	Source uint16;
-// 	Command string;	//OR byte, OR uint8
-// 	Status [4]byte;
-// 	// MT-data_CurrentOrArchivalIndication
-// }
+
+type dbM2M struct{
+	Gateway int;  // M2M-package
+	ICCID string; // MT-request
+	// key <-- MT-Info
+	// key <-- MT Service Info
+}
+
+// MT-Info
+type dbMTInfo struct{
+	// MT-data_Info
+	Destination uint16;
+	Source uint16;
+	Command string;	//OR byte, OR uint8
+	Status string;
+}
+
+// MT Service Info
+type dbMTServiceInfo struct{
+	SerialNumber string
+	// key <-- dbMT current
+	// key <-- dbMT archival
+	ProductionDate int
+	RSSI int
+	RSRP int
+	RSRQ float32
+	SoftwareVersion string
+	TypeProcessor string
+	BaseStationId string
+}
+
+type dbMTIndication struct{
+	TypeIndication string // "current" or "archival"
+	Indication string
+	BatteryCharge string
+	CommunicationLevel string // int?
+}
+
 
 type LoggerServerTCP struct {
 	*log.Logger
@@ -90,43 +116,6 @@ func (logger *LoggerServerTCP) GetHostname() (string, error) {
 	local_addr := str.Split(conn_udp.LocalAddr().String(), ":")[0]
 
 	return local_addr, nil
-}
-
-
-type dbM2M struct{
-	Gateway int;  // M2M-package
-	ICCID string; // MT-request
-	// key <-- MT-Info
-	// key <-- MT Service Info
-}
-
-// MT-Info
-type dbMTInfo struct{
-	// MT-data_Info
-	Destination uint16;
-	Source uint16;
-	Command string;	//OR byte, OR uint8
-	Status [4]string;
-}
-
-// MT Service Info
-type dbMTServiceInfo struct{
-	SerialNumber string
-	// key <-- dbMTData
-	ProductionDate string
-	RSSI int
-	RSRP int
-	RSRQ float32
-	SoftwareVersion string
-	TypeProcessor string
-	BaseStationId string
-}
-
-type dbMTIndication struct{
-	TypeIndication string // "current" or "archival"
-	Indication string
-	BatteryCharge string
-	CommunicationLevel string // int?
 }
 
 func (logger *LoggerServerTCP) GetDataClient(conn_client net.Conn) {
@@ -191,7 +180,6 @@ func (logger *LoggerServerTCP) GetDataClient(conn_client net.Conn) {
 			var mt_type_package uint8
 			m2m_info_db.Destination,
 			m2m_info_db.Source,
-			m2m_info_db.Command,
 			m2m_info_db.Status,
 			mt_type_package=parsMIRTEK.ParseMTPackageData_Info(m2m_data_stuffing[0:14], logger.Logger)
 
