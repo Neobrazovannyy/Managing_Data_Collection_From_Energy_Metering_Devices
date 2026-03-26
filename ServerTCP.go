@@ -19,28 +19,33 @@ import (
 )
 
 
-type dbM2M struct{
-	Gateway int;  // M2M-package
-	ICCID string; // MT-request
-	// key <-- MT-Info
-	// key <-- MT Service Info
+type Gateway struct {
+	Gateway int
 }
 
-// MT-Info
-type dbMTInfo struct{
-	// MT-data_Info
-	Destination uint16;
-	Source uint16;
-	Command string;	//OR byte, OR uint8
-	Status string;
+type CurrentIndication struct {
+	Indication string
+	BatteryCharge string
+	CommunicationLevel string
 }
 
-// MT Service Info
-type dbMTServiceInfo struct{
+type ArchivalIndication struct {
+	Indication string
+	BatteryCharge string
+	CommunicationLevel string
+}
+
+type Info struct {
+	Destination uint16
+	Source uint16
+	Status string
+}
+
+type ServiceInfo struct {
 	SerialNumber string
-	// key <-- dbMT current
-	// key <-- dbMT archival
-	ProductionDate int
+	ICCID string
+	// other single tables
+	ProductionUnixDate int
 	RSSI int
 	RSRP int
 	RSRQ float32
@@ -48,14 +53,6 @@ type dbMTServiceInfo struct{
 	TypeProcessor string
 	BaseStationId string
 }
-
-type dbMTIndication struct{
-	TypeIndication string // "current" or "archival"
-	Indication string
-	BatteryCharge string
-	CommunicationLevel string // int?
-}
-
 
 type LoggerServerTCP struct {
 	*log.Logger
@@ -121,11 +118,12 @@ func (logger *LoggerServerTCP) GetHostname() (string, error) {
 func (logger *LoggerServerTCP) GetDataClient(conn_client net.Conn) {
 	// net.Conn - interface, this is already a "pointer" to a specific implementation
 	defer conn_client.Close()
-	var m2m_db dbM2M
-	var m2m_info_db dbMTInfo
-	var m2m_current_indication_db dbMTIndication
-	var m2m_archival_indication_db dbMTIndication
-	var m2m_service_db dbMTServiceInfo
+	// create db struct
+	var gateway_db Gateway
+	var current_indication_db CurrentIndication
+	var archival_indication_db ArchivalIndication
+	var info_db Info
+	var service_info_db ServiceInfo
 
 	for{
 		buf:=make([]byte, 1024)
@@ -159,17 +157,16 @@ func (logger *LoggerServerTCP) GetDataClient(conn_client net.Conn) {
 			return
 		}
 		
-		if m2m_db.Gateway==0{
-			m2m_db.Gateway=m2m_gateway
+		if gateway_db.Gateway==0{
+			gateway_db.Gateway=m2m_gateway
 		}
 
 		/*----- Parsing MT-package -----*/
 
-		// type: request
-		if m2m_type==0{
-			m2m_db.ICCID=parsMIRTEK.ParseMTPackageRequest(m2m_data, logger.Logger)
-		// type: data
-		}else{
+		switch m2m_type{
+		case 0:	// type: request
+			service_info_db.ICCID=parsMIRTEK.ParseMTPackageRequest(m2m_data, logger.Logger)
+		case 1:	// type: data
 			m2m_data_stuffing, err_stuffing := parsMIRTEK.PreparingMTPackage(m2m_data, logger.Logger)
 			if err_stuffing!=nil{
 				logger.Printf("%s\n", m2m_err)
@@ -178,35 +175,30 @@ func (logger *LoggerServerTCP) GetDataClient(conn_client net.Conn) {
 			}
 
 			var mt_type_package uint8
-			m2m_info_db.Destination,
-			m2m_info_db.Source,
-			m2m_info_db.Status,
+			info_db.Destination,
+			info_db.Source,
+			info_db.Status,
 			mt_type_package=parsMIRTEK.ParseMTPackageData_Info(m2m_data_stuffing[0:14], logger.Logger)
 
-			// Current
-			if mt_type_package==1{
-				m2m_current_indication_db.TypeIndication="current"
-				m2m_current_indication_db.Indication,
-				m2m_current_indication_db.BatteryCharge,
-				m2m_current_indication_db.CommunicationLevel=parsMIRTEK.ParseMTPackageData_CurrentOrArchivalIndication("current", m2m_data_stuffing[25:], logger.Logger)
-			// Archival
-			} else if mt_type_package==2{
-				m2m_archival_indication_db.TypeIndication="archival"
-				m2m_current_indication_db.Indication,
-				m2m_current_indication_db.BatteryCharge,
-				m2m_current_indication_db.CommunicationLevel=parsMIRTEK.ParseMTPackageData_CurrentOrArchivalIndication("archival", m2m_data_stuffing[25:], logger.Logger)
-			// Service Information
-			} else {
-				m2m_service_db.SerialNumber,
-				m2m_service_db.ProductionDate,
-				m2m_service_db.RSSI,
-				m2m_service_db.RSRP,
-				m2m_service_db.RSRQ,
-				m2m_service_db.SoftwareVersion,
-				m2m_service_db.TypeProcessor,
-				m2m_service_db.BaseStationId=parsMIRTEK.ParseMTPackageData_ServiceInformation(m2m_data_stuffing[15:], logger.Logger)
+			switch mt_type_package{
+			case 1:	// Current
+				current_indication_db.Indication,
+				current_indication_db.BatteryCharge,
+				current_indication_db.CommunicationLevel=parsMIRTEK.ParseMTPackageData_CurrentOrArchivalIndication("current", m2m_data_stuffing[25:], logger.Logger)
+			case 2:	// Archival
+				archival_indication_db.Indication,
+				archival_indication_db.BatteryCharge,
+				archival_indication_db.CommunicationLevel=parsMIRTEK.ParseMTPackageData_CurrentOrArchivalIndication("archival", m2m_data_stuffing[25:], logger.Logger)
+			case 3:	// Service Information
+				service_info_db.SerialNumber,
+				service_info_db.ProductionUnixDate,
+				service_info_db.RSSI,
+				service_info_db.RSRP,
+				service_info_db.RSRQ,
+				service_info_db.SoftwareVersion,
+				service_info_db.TypeProcessor,
+				service_info_db.BaseStationId=parsMIRTEK.ParseMTPackageData_ServiceInformation(m2m_data_stuffing[15:], logger.Logger)
 			}
-			
 		}
 
 	}
