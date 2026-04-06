@@ -44,13 +44,13 @@ CREATE TABLE "ServiceInfo" (
 	"RSRPId" INTEGER REFERENCES "RSRP"("Id"),
 	"RSRQId" INTEGER REFERENCES "RSRQ"("Id"),
 	"VersionId" INTEGER REFERENCES "SoftwareVersion"("Id"),
-	"TypeProcessorId" INTEGER  REFERENCES "SoftwareVersion"("Id"),
+	"TypeProcessorId" INTEGER  REFERENCES "TypeProcessor"("Id"),
 	"StationId"	INTEGER REFERENCES "BaseStationId"("Id")
 );
 
 CREATE TABLE "ProductionUnixDate" (
 	"Id" INTEGER PRIMARY KEY AUTOINCREMENT,
-	"UnixDate" INTEGER NOT NULL UNIQUE
+	"ProductionUnixDate" INTEGER NOT NULL UNIQUE
 );
 
 CREATE TABLE "RSSI" (
@@ -83,3 +83,5 @@ CREATE TABLE "BaseStationId" (
 	"Id" INTEGER PRIMARY KEY AUTOINCREMENT,
 	"BaseStationId"	TEXT NOT NULL UNIQUE
 );
+
+-- sqlite3 mtdb.sqlite < struct_db.sql

@@ -15,7 +15,8 @@ import (
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
 
-	"PowerMonitor/ParsePackageMIRTEK"
+	"PowerMonitor/lib/ParsePackageMIRTEK"
+	"PowerMonitor/lib/PopulateDataBaseMIRTEK"
 )
 
 
@@ -203,9 +204,97 @@ func (logger *LoggerServerTCP) GetDataClient(conn_client net.Conn) {
 
 	}
 
-	// send db
-	return
+	logger.PopulateDataBase(gateway_db, current_indication_db, archival_indication_db, info_db, service_info_db)
 }
+
+func (logger *LoggerServerTCP) PopulateDataBase(gateway_db Gateway, current_indication_db CurrentIndication, archival_indication_db ArchivalIndication, info_db Info, service_info_db ServiceInfo) {
+	local_path_db:="mtdb.sqlite"
+
+	path_exe, err_ex := os.Executable()
+	if err_ex != nil {
+		logger.Printf("!Error! Mdaaaaa: %s\nThe data was not written to the Database.\n", err_ex)
+		fmt.Printf("!Error! Mdaaaaa: %s\nThe data was not written to the Database.\n", err_ex)
+		return
+	}
+
+	full_path_db := path.Join(filepath.Dir(path_exe), "db", local_path_db)
+
+	file_db, err:=PopulateDataBaseMIRTEK.OpenBD(full_path_db)
+	if err!=nil{
+		logger.Printf("!Error! open db(sqlite): %s\nThe data was not written to the Database.\n", err)
+		fmt.Printf("!Error! open db(sqlite): %s\nThe data was not written to the Database.\n", err)
+		return
+	}
+	defer file_db.CloseBD()
+
+	err=file_db.SetConfigPooling()
+	if err!=nil{
+		logger.Printf("!Error! database connections: %s\nThe data was not written to the Database.\n", err)
+		fmt.Printf("!Error! database connections: %s\nThe data was not written to the Database.\n", err)
+		return
+	}
+
+	//Writing constant data Reference Tables.
+	var list_const_table_id [7]int
+	list_const_table_id, err=file_db.InsertReferenceTables(
+		service_info_db.ProductionUnixDate,
+		service_info_db.RSSI,
+		service_info_db.RSRP,
+		service_info_db.RSRQ,
+		service_info_db.SoftwareVersion,
+		service_info_db.TypeProcessor,
+		service_info_db.BaseStationId,
+	)
+	if err!=nil{
+		logger.Printf("!Error! filling the constant table (ProductionUnixDate, RSSI, RSRP, RSRQ, SoftwareVersion, TypeProcessor, BaseStationId): %s\nThe data was not written to the Database.\n", err)
+		fmt.Printf("!Error! filling the constant table (ProductionUnixDate, RSSI, RSRP, RSRQ, SoftwareVersion, TypeProcessor, BaseStationId): %s\nThe data was not written to the Database.\n", err)
+		return
+	}
+	
+	//Checks whether such a "Gateway" exists. If it does, it returns its "name gateway"; if it doesn't, it returns -1.
+	gateway_id, err:=file_db.CheckGatewayId(gateway_db.Gateway)
+
+	//Get
+	archival_indication_id, err:=file_db.GetArchivalIndicationId(gateway_db.Gateway)
+
+
+
+	//,kzzzzzzzzzzzzzzzzzzzzzzzz........................
+
+	info_id, err:=file_db.PopulateTableInfo(
+		info_db.Destination,
+		info_db.Source,
+		info_db.Status,
+	)
+	if err!=nil{
+		logger.Printf("!Error! filling the \"Info\" table: %s\nThe data was not written to the Database.\n", err)
+		fmt.Printf("!Error! filling the \"Info\" table: %s\nThe data was not written to the Database.\n", err)
+		return
+	}
+
+	// var info_service_info
+	info_service_info, err:=file_db.PopulateTableServiceInfo(
+		service_info_db.SerialNumber,
+		service_info_db.ICCID,
+		// other single tables
+		service_info_db.ProductionUnixDate,
+		service_info_db.RSSI,
+		service_info_db.RSRP,
+		service_info_db.RSRQ,
+		service_info_db.SoftwareVersion,
+		service_info_db.TypeProcessor,
+		service_info_db.BaseStationId,
+	)
+	if err!=nil{
+		logger.Printf("!Error! filling the \"ServiceInfo\" table: %s\nThe data was not written to the Database.\n", err)
+		fmt.Printf("!Error! filling the \"ServiceInfo\" table: %s\nThe data was not written to the Database.\n", err)
+		return
+	}
+	
+	file_db.PopulateTableCurrentIndication(info_id, info_service_info)
+
+}
+
 
 func main(){
 	/*--- Setup logger---*/
@@ -221,13 +310,16 @@ func main(){
 	/*--- Setup flags ---*/
 	pflag.StringP("host", "h", "0.0.0.0", "Listening Host Number")
 	pflag.StringP("port", "p", "5001", "Listening Port Number")
+	pflag.StringP("db", "b", "5001", "db/mtdb.sqlite")
 
 	pflag.CommandLine.SetNormalizeFunc(AliasNormalizeFunc)
 	pflag.Parse()
 	viper.BindPFlags(pflag.CommandLine)
 
+	// addr=host:port
 	host_lis_server:=viper.GetString("host")
 	port_lis_server:=viper.GetString("port")
+	// path_db:=viper.GetString("db")
 
 	logger_server_tcp.Printf("Selected address for listening: %s:%s\n", host_lis_server, port_lis_server)
 	fmt.Printf("Selected address for listening: %s:%s\n", host_lis_server, port_lis_server)
@@ -276,3 +368,5 @@ func main(){
 	}
 
 }
+
+// go build ServerTCP.go && ./ServerTCP.exe
