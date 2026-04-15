@@ -1,87 +1,120 @@
-PRAGMA foreign_keys = ON;
+-- psql -U postgres -f struct_db.sql
+DROP DATABASE mtdb;
+CREATE DATABASE mtdb;
+
+\connect mtdb
 
 CREATE TABLE "Gateway" (
-	"Gateway" INTEGER NOT NULL UNIQUE,
-    "CurrentId" INTEGER,
-    "ArchivalId" INTEGER,
-	FOREIGN KEY ("CurrentId") REFERENCES "CurrentIndication"("Id"),
-	FOREIGN KEY ("ArchivalId") REFERENCES "ArchivalIndication"("Id")
+	"Id" SERIAL PRIMARY KEY,
+	"Gateway" INTEGER NOT NULL UNIQUE
 );
 
 CREATE TABLE "CurrentIndication" (
-	"Id" INTEGER PRIMARY KEY AUTOINCREMENT,
+	"Id" SERIAL PRIMARY KEY,
+	"GatewayId" INTEGER REFERENCES "Gateway"("Id"),
 	"Indication" TEXT,
 	"BatteryCharge" TEXT,
 	"CommunicationLevel" TEXT,
     "UnixDateGetData" INTEGER,
-    "InfoId" INTEGER REFERENCES "Info"("Id"),
-    "ServiceInfoId" INTEGER REFERENCES "ServiceInfo"("Id")
-);
-
-CREATE TABLE "ArchivalIndication" (
-	"Id" INTEGER PRIMARY KEY AUTOINCREMENT,
-	"Indication" TEXT,
-	"BatteryCharge" TEXT,
-	"CommunicationLevel" TEXT,
-    "UnixDateGetData" INTEGER,
-    "InfoId" INTEGER REFERENCES "Info"("Id"),
-    "ServiceInfoId" INTEGER REFERENCES "ServiceInfo"("Id")
+	-- Info
+	"Destination" INTEGER,
+	"Source" INTEGER,
+	"Status" TEXT,
+	-- Service Info
+	"SerialNumber" TEXT,
+	"ICCID" TEXT,
+	"ProductionUnixDate" INTEGER,
+	"RSSI" INTEGER,
+	"RSRP" INTEGER,
+	"RSRQ" REAL,
+	"SINR" INTEGER,
+	"SoftwareVersion" TEXT,
+	"TypeProcessor" TEXT,
+	"BaseStationId" TEXT
 );
 
 CREATE TABLE "Info" (
-	"Id" INTEGER PRIMARY KEY AUTOINCREMENT,
+	"Id" SERIAL PRIMARY KEY,
 	"Destination" INTEGER,
 	"Source" INTEGER,
 	"Status" TEXT
 );
 
-CREATE TABLE "ServiceInfo" (
-	"Id" INTEGER PRIMARY KEY AUTOINCREMENT,
-	"SerialNumber" TEXT,
-	"ICCID" TEXT,
-	"ProductionDateId" INTEGER REFERENCES "ProductionUnixDate"("Id"),
-	"RSSIId" INTEGER REFERENCES "RSSI"("Id"),
-	"RSRPId" INTEGER REFERENCES "RSRP"("Id"),
-	"RSRQId" INTEGER REFERENCES "RSRQ"("Id"),
-	"VersionId" INTEGER REFERENCES "SoftwareVersion"("Id"),
-	"TypeProcessorId" INTEGER  REFERENCES "TypeProcessor"("Id"),
-	"StationId"	INTEGER REFERENCES "BaseStationId"("Id")
+
+CREATE TABLE "ICCID" (
+	"Id" SERIAL PRIMARY KEY,
+	"ICCID" TEXT
 );
 
 CREATE TABLE "ProductionUnixDate" (
-	"Id" INTEGER PRIMARY KEY AUTOINCREMENT,
+	"Id" SERIAL PRIMARY KEY,
 	"ProductionUnixDate" INTEGER NOT NULL UNIQUE
 );
 
 CREATE TABLE "RSSI" (
-	"Id" INTEGER PRIMARY KEY AUTOINCREMENT,
+	"Id" SERIAL PRIMARY KEY,
 	"RSSI" INTEGER NOT NULL UNIQUE
 );
 
 CREATE TABLE "RSRP" (
-	"Id" INTEGER PRIMARY KEY AUTOINCREMENT,
+	"Id" SERIAL PRIMARY KEY,
 	"RSRP" INTEGER NOT NULL UNIQUE
 );
 
 CREATE TABLE "RSRQ" (
-	"Id" INTEGER PRIMARY KEY AUTOINCREMENT,
+	"Id" SERIAL PRIMARY KEY,
 	"RSRQ" REAL NOT NULL UNIQUE
+);
 
+CREATE TABLE "SINR" (
+	"Id" SERIAL PRIMARY KEY,
+	"SINR" INTEGER NOT NULL UNIQUE
 );
 
 CREATE TABLE "SoftwareVersion" (
-	"Id" INTEGER PRIMARY KEY AUTOINCREMENT,
+	"Id" SERIAL PRIMARY KEY,
 	"SoftwareVersion" TEXT NOT NULL UNIQUE
 );
 
 CREATE TABLE "TypeProcessor" (
-	"Id" INTEGER PRIMARY KEY AUTOINCREMENT,
+	"Id" SERIAL PRIMARY KEY,
 	"TypeProcessor" TEXT NOT NULL UNIQUE
 );
 
 CREATE TABLE "BaseStationId" (
-	"Id" INTEGER PRIMARY KEY AUTOINCREMENT,
+	"Id" SERIAL PRIMARY KEY,
 	"BaseStationId"	TEXT NOT NULL UNIQUE
 );
 
--- sqlite3 mtdb.sqlite < struct_db.sql
+CREATE TABLE "ServiceInfo" (
+	"Id" SERIAL PRIMARY KEY,
+	"SerialNumber" TEXT,
+	"ICCIDId" INTEGER REFERENCES "ICCID"("Id"),
+	"ProductionDateId" INTEGER REFERENCES "ProductionUnixDate"("Id"),
+	"RSSIId" INTEGER REFERENCES "RSSI"("Id"),
+	"RSRPId" INTEGER REFERENCES "RSRP"("Id"),
+	"RSRQId" INTEGER REFERENCES "RSRQ"("Id"),
+	"SINRId" INTEGER REFERENCES "SINR"("Id"),
+	"SoftwareVersionId" INTEGER REFERENCES "SoftwareVersion"("Id"),
+	"TypeProcessorId" INTEGER  REFERENCES "TypeProcessor"("Id"),
+	"StationId"	INTEGER REFERENCES "BaseStationId"("Id")
+);
+
+CREATE TABLE "ArchivalIndication" (
+	"Id" SERIAL PRIMARY KEY,
+	"Indication" TEXT,
+	"BatteryCharge" TEXT,
+	"CommunicationLevel" TEXT,
+    "UnixDateGetData" INTEGER,
+	"InfoId" INTEGER REFERENCES "Info"("Id"),
+	"ServiceInfoId" INTEGER REFERENCES "ServiceInfo"("Id"),
+	"GatewayId" INTEGER REFERENCES "Gateway"("Id")
+);
+
+-- ALTER TABLE "ArchivalIndication"
+-- ADD CONSTRAINT "fk_ArchivalIndication_ServiceInfo"
+-- FOREIGN KEY ("ServiceInfoId") REFERENCES "ServiceInfo"("Id");
+
+-- psql -U postgres -c "DROP DATABASE mtdb;"
+-- psql -U postgres -c "CREATE DATABASE mtdb;"
+-- psql -U postgres -d mtdb -f struct_db.sql

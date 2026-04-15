@@ -10,15 +10,15 @@ import (
 	str "strings"
 )
 
-func CreateClientTCP(addr_str string) *net.TCPConn{
-	tcp_addr, err := net.ResolveTCPAddr("tcp4", addr_str)
+func CreateClientTCP(host_str string) *net.TCPConn{
+	tcp_host, err := net.ResolveTCPAddr("tcp4", host_str)
 	//*net.TCPAddr
 	if err!=nil{
 		fmt.Printf("Error (ResolveTCPAddr): %s\n", err)
 		return nil
 	}
 
-	conn, err := net.DialTCP("tcp4", nil, tcp_addr)
+	conn, err := net.DialTCP("tcp4", nil, tcp_host)
 	if err!=nil{
 		fmt.Printf("Error (DialTCP): %v\n", err)
 		return nil
@@ -70,12 +70,12 @@ func ReadFilePackageAndConvertToHEX(list_file_names []string) [][]byte {
 func main(){
 	args := os.Args
 	if len(args)==1{
-		fmt.Printf("Please provide host:port (server).\n")
+		fmt.Printf("Please provide host=addr+port (server).\n")
 		return
 	}
 
 	/*----- Read package HEX -----*/
-	list_file_names:=[]string{"request_connect.txt", "data_1.txt", "data_1.txt", "service_information.txt"}
+	list_file_names:=[]string{"request_connect.txt", "data_1.txt", "data_2.txt", "service_information.txt"}
 	list_packages:=make([][]byte, len(list_file_names))
 	list_packages=ReadFilePackageAndConvertToHEX(list_file_names)
 
@@ -92,13 +92,13 @@ func main(){
 
 
 	/*----- Create ClientTCP -----*/
-	addr_str:=args[1]
-	var tcp_conn *net.TCPConn=CreateClientTCP(addr_str)
+	host_str:=args[1]
+	var tcp_conn *net.TCPConn=CreateClientTCP(host_str)
 	if tcp_conn==nil{return}
 	// defer tcp_conn.Close()
 
+	reader_stdion := bufio.NewReader(os.Stdin)
 	for{
-		reader_stdion := bufio.NewReader(os.Stdin)
 		fmt.Printf(">> ")
 		choice_package, _:=reader_stdion.ReadString('\n')
 		choice_package=str.TrimSpace(choice_package)
@@ -117,7 +117,7 @@ func main(){
 		}
 	}
 }
-
+// go build client.go && ./client.exe 192.168.0.107
 /*
 net.Dial() - высокоуровневая абстракция
 	Возвращаемый тип": net.Conn (интерфейс)

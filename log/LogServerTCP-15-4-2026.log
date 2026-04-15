@@ -1,0 +1,1331 @@
+2026/04/15 18:09:54 ServerTCP.go:349: =========== START PROGRAM  ===========
+2026/04/15 18:09:54 ServerTCP.go:368: Selected address for listening: 0.0.0.0:5001
+2026/04/15 18:09:54 ServerTCP.go:377: The server works at the host: 192.168.0.107
+2026/04/15 18:09:54 ServerTCP.go:388: Server is listening: 0.0.0.0:5001
+2026/04/15 18:11:34 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 18:20:42 ServerTCP.go:349: =========== START PROGRAM  ===========
+2026/04/15 18:20:42 ServerTCP.go:368: Selected address for listening: 0.0.0.0:5001
+2026/04/15 18:20:42 ServerTCP.go:377: The server works at the host: 192.168.0.107
+2026/04/15 18:20:42 ServerTCP.go:388: Server is listening: 0.0.0.0:5001
+2026/04/15 18:20:46 ServerTCP.go:408: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 18:22:01 ServerTCP.go:129: The client has close connect: EOF
+2026/04/15 18:22:01 ServerTCP.go:211: !Error! get "ID" (or filling) the "reference table" (ProductionUnixDate, RSSI, RSRP, RSRQ, SINR, SoftwareVersion, TypeProcessor, BaseStationId): pq: столбец "id" не существует at position 2:9 (42703)
+The data was not written to the Database.
+2026/04/15 18:22:52 ServerTCP.go:408: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 18:23:23 ServerTCP.go:141: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 18:23:23 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 18:23:23 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 18:23:45 ServerTCP.go:141: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X03 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0XFE 0X80 0XB4 0XC4 0X8F 0XA6 0X98 0XA0 0X81 0X66 0X8B 0XB2 0X87 0X80 0X30 0X30 0X30 0X30 0X30 0X3D 0X55 0X32 0XFE 0XF6 0X90
+2026/04/15 18:23:45 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x03 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0xfe 0x80 0xb4 0xc4 0x8f 0xa6 0x98 0xa0 0x81 0x66 0x8b 0xb2 0x87 0x80 0x30 0x30 0x30 0x30 0x30 0x3d 0x55 0x32 0xfe
+	The received data is not corrupted (M2M)
+2026/04/15 18:23:45 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 18:23:45 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Service Information
+2026/04/15 18:23:45 ParsePackageMIRTEK.go:820: MT-packet (data, part: "service information") data parsed:
+	Serial Number: 1265801564002
+	Production date: 2000-1-1 (UNIX-date: 951260400)
+	RSSI: -95
+	RSRP: -102
+	RSRQ: -7.5
+	SINR: 32
+	Software Version: 102.1
+	Processor type (first letter): 
+	Base station ID: 60003B2
+2026/04/15 18:23:53 ServerTCP.go:129: The client has close connect: EOF
+2026/04/15 18:23:53 ServerTCP.go:211: !Error! get "ID" (or filling) the "reference table" (ProductionUnixDate, RSSI, RSRP, RSRQ, SINR, SoftwareVersion, TypeProcessor, BaseStationId): pq: столбец "id" не существует at position 2:9 (42703)
+The data was not written to the Database.
+2026/04/15 18:24:06 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 19:03:46 ServerTCP.go:407: =========== START PROGRAM  ===========
+2026/04/15 19:03:46 ServerTCP.go:426: Selected address for listening: 0.0.0.0:5001
+2026/04/15 19:03:46 ServerTCP.go:435: The server works at the host: 192.168.0.107
+2026/04/15 19:03:46 ServerTCP.go:446: Server is listening: 0.0.0.0:5001
+2026/04/15 19:03:47 ServerTCP.go:466: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 19:03:54 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 19:03:54 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 19:03:54 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 19:04:11 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X03 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0XFE 0X80 0XB4 0XC4 0X8F 0XA6 0X98 0XA0 0X81 0X66 0X8B 0XB2 0X87 0X80 0X30 0X30 0X30 0X30 0X30 0X3D 0X55 0X32 0XFE 0XF6 0X90
+2026/04/15 19:04:11 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x03 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0xfe 0x80 0xb4 0xc4 0x8f 0xa6 0x98 0xa0 0x81 0x66 0x8b 0xb2 0x87 0x80 0x30 0x30 0x30 0x30 0x30 0x3d 0x55 0x32 0xfe
+	The received data is not corrupted (M2M)
+2026/04/15 19:04:11 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:04:11 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Service Information
+2026/04/15 19:04:11 ParsePackageMIRTEK.go:820: MT-packet (data, part: "service information") data parsed:
+	Serial Number: 1265801564002
+	Production date: 2000-1-1 (UNIX-date: 951260400)
+	RSSI: -95
+	RSRP: -102
+	RSRQ: -7.5
+	SINR: 32
+	Software Version: 102.1
+	Processor type (first letter): 
+	Base station ID: 60003B2
+2026/04/15 19:04:34 ServerTCP.go:183: The client has close connect: EOF
+2026/04/15 19:24:41 ServerTCP.go:466: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 19:24:43 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 19:24:43 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 19:24:43 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 19:24:59 ServerTCP.go:183: The client has close connect: EOF
+2026/04/15 19:26:57 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 19:26:59 ServerTCP.go:407: =========== START PROGRAM  ===========
+2026/04/15 19:26:59 ServerTCP.go:426: Selected address for listening: 0.0.0.0:5001
+2026/04/15 19:26:59 ServerTCP.go:435: The server works at the host: 192.168.0.107
+2026/04/15 19:26:59 ServerTCP.go:446: Server is listening: 0.0.0.0:5001
+2026/04/15 19:27:02 ServerTCP.go:466: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 19:27:14 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 19:27:14 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 19:27:14 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 19:27:17 ServerTCP.go:183: The client has close connect: EOF
+2026/04/15 19:27:19 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 19:27:21 ServerTCP.go:407: =========== START PROGRAM  ===========
+2026/04/15 19:27:21 ServerTCP.go:426: Selected address for listening: 0.0.0.0:5001
+2026/04/15 19:27:21 ServerTCP.go:435: The server works at the host: 192.168.0.107
+2026/04/15 19:27:21 ServerTCP.go:446: Server is listening: 0.0.0.0:5001
+2026/04/15 19:28:39 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 19:28:43 ServerTCP.go:408: =========== START PROGRAM  ===========
+2026/04/15 19:28:43 ServerTCP.go:427: Selected address for listening: 0.0.0.0:5001
+2026/04/15 19:28:43 ServerTCP.go:436: The server works at the host: 192.168.0.107
+2026/04/15 19:28:43 ServerTCP.go:447: Server is listening: 0.0.0.0:5001
+2026/04/15 19:28:44 ServerTCP.go:467: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 19:28:48 ServerTCP.go:196: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 19:28:48 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 19:28:48 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 19:29:29 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 19:29:33 ServerTCP.go:408: =========== START PROGRAM  ===========
+2026/04/15 19:29:33 ServerTCP.go:427: Selected address for listening: 0.0.0.0:5001
+2026/04/15 19:29:33 ServerTCP.go:436: The server works at the host: 192.168.0.107
+2026/04/15 19:29:33 ServerTCP.go:447: Server is listening: 0.0.0.0:5001
+2026/04/15 19:29:34 ServerTCP.go:467: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 19:29:41 ServerTCP.go:196: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 19:29:41 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 19:29:41 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 19:29:53 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 19:30:12 ServerTCP.go:408: =========== START PROGRAM  ===========
+2026/04/15 19:30:12 ServerTCP.go:427: Selected address for listening: 0.0.0.0:5001
+2026/04/15 19:30:12 ServerTCP.go:436: The server works at the host: 192.168.0.107
+2026/04/15 19:30:12 ServerTCP.go:447: Server is listening: 0.0.0.0:5001
+2026/04/15 19:30:13 ServerTCP.go:467: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 19:30:33 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 19:31:01 ServerTCP.go:408: =========== START PROGRAM  ===========
+2026/04/15 19:31:01 ServerTCP.go:427: Selected address for listening: 0.0.0.0:5001
+2026/04/15 19:31:01 ServerTCP.go:436: The server works at the host: 192.168.0.107
+2026/04/15 19:31:01 ServerTCP.go:447: Server is listening: 0.0.0.0:5001
+2026/04/15 19:31:02 ServerTCP.go:467: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 19:31:08 ServerTCP.go:196: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 19:31:08 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 19:31:08 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 19:31:22 ServerTCP.go:183: The client has close connect: EOF
+2026/04/15 19:31:24 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 19:32:19 ServerTCP.go:408: =========== START PROGRAM  ===========
+2026/04/15 19:32:19 ServerTCP.go:427: Selected address for listening: 0.0.0.0:5001
+2026/04/15 19:32:19 ServerTCP.go:436: The server works at the host: 192.168.0.107
+2026/04/15 19:32:19 ServerTCP.go:447: Server is listening: 0.0.0.0:5001
+2026/04/15 19:32:22 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 19:32:29 ServerTCP.go:408: =========== START PROGRAM  ===========
+2026/04/15 19:32:29 ServerTCP.go:427: Selected address for listening: 0.0.0.0:5001
+2026/04/15 19:32:29 ServerTCP.go:436: The server works at the host: 192.168.0.107
+2026/04/15 19:32:29 ServerTCP.go:447: Server is listening: 0.0.0.0:5001
+2026/04/15 19:32:30 ServerTCP.go:467: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 19:32:33 ServerTCP.go:196: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 19:32:33 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 19:32:33 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 19:32:39 ServerTCP.go:196: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X03 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0XFE 0X80 0XB4 0XC4 0X8F 0XA6 0X98 0XA0 0X81 0X66 0X8B 0XB2 0X87 0X80 0X30 0X30 0X30 0X30 0X30 0X3D 0X55 0X32 0XFE 0XF6 0X90
+2026/04/15 19:32:39 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x03 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0xfe 0x80 0xb4 0xc4 0x8f 0xa6 0x98 0xa0 0x81 0x66 0x8b 0xb2 0x87 0x80 0x30 0x30 0x30 0x30 0x30 0x3d 0x55 0x32 0xfe
+	The received data is not corrupted (M2M)
+2026/04/15 19:32:39 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:32:39 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Service Information
+2026/04/15 19:32:39 ParsePackageMIRTEK.go:820: MT-packet (data, part: "service information") data parsed:
+	Serial Number: 1265801564002
+	Production date: 2000-1-1 (UNIX-date: 951260400)
+	RSSI: -95
+	RSRP: -102
+	RSRQ: -7.5
+	SINR: 32
+	Software Version: 102.1
+	Processor type (first letter): 
+	Base station ID: 60003B2
+2026/04/15 19:32:41 ServerTCP.go:186: Error read data from client: read tcp 192.168.0.107:5001->192.168.0.107:65439: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/04/15 19:32:45 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 19:36:16 ServerTCP.go:408: =========== START PROGRAM  ===========
+2026/04/15 19:36:16 ServerTCP.go:427: Selected address for listening: 0.0.0.0:5001
+2026/04/15 19:36:16 ServerTCP.go:436: The server works at the host: 192.168.0.107
+2026/04/15 19:36:16 ServerTCP.go:447: Server is listening: 0.0.0.0:5001
+2026/04/15 19:36:21 ServerTCP.go:467: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 19:36:23 ServerTCP.go:196: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 19:36:23 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 19:36:23 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 19:36:33 ServerTCP.go:196: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X03 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0XFE 0X80 0XB4 0XC4 0X8F 0XA6 0X98 0XA0 0X81 0X66 0X8B 0XB2 0X87 0X80 0X30 0X30 0X30 0X30 0X30 0X3D 0X55 0X32 0XFE 0XF6 0X90
+2026/04/15 19:36:33 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x03 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0xfe 0x80 0xb4 0xc4 0x8f 0xa6 0x98 0xa0 0x81 0x66 0x8b 0xb2 0x87 0x80 0x30 0x30 0x30 0x30 0x30 0x3d 0x55 0x32 0xfe
+	The received data is not corrupted (M2M)
+2026/04/15 19:36:33 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:36:33 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Service Information
+2026/04/15 19:36:33 ParsePackageMIRTEK.go:820: MT-packet (data, part: "service information") data parsed:
+	Serial Number: 1265801564002
+	Production date: 2000-1-1 (UNIX-date: 951260400)
+	RSSI: -95
+	RSRP: -102
+	RSRQ: -7.5
+	SINR: 32
+	Software Version: 102.1
+	Processor type (first letter): 
+	Base station ID: 60003B2
+2026/04/15 19:37:29 ServerTCP.go:183: The client has close connect: EOF
+2026/04/15 19:37:31 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 19:40:52 ServerTCP.go:408: =========== START PROGRAM  ===========
+2026/04/15 19:40:52 ServerTCP.go:427: Selected address for listening: 0.0.0.0:5001
+2026/04/15 19:40:52 ServerTCP.go:436: The server works at the host: 192.168.0.107
+2026/04/15 19:40:52 ServerTCP.go:447: Server is listening: 0.0.0.0:5001
+2026/04/15 19:40:53 ServerTCP.go:467: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 19:40:56 ServerTCP.go:196: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 19:40:56 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 19:40:56 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 19:40:57 ServerTCP.go:196: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X33 0X34 0X56 0X33 0X2E 0X36 0X30 0X52 0X31 0X36 0X31 0XFE 0X55 0X32 0X43 0X0E 0XE0
+2026/04/15 19:40:57 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x33 0x34 0x56 0x33 0x2e 0x36 0x30 0x52 0x31 0x36 0x31 0xfe 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 19:40:57 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:40:57 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 19:40:57 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.034
+	Battery charge: 3.60
+	Communication level: -95
+2026/04/15 19:40:59 ServerTCP.go:196: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X33 0X34 0X56 0X33 0X2E 0X36 0X30 0X52 0X31 0X36 0X31 0XFE 0X55 0X32 0X43 0X0E 0XE0
+2026/04/15 19:40:59 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x33 0x34 0x56 0x33 0x2e 0x36 0x30 0x52 0x31 0x36 0x31 0xfe 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 19:40:59 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:40:59 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 19:40:59 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.034
+	Battery charge: 3.60
+	Communication level: -95
+2026/04/15 19:41:01 ServerTCP.go:196: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X03 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0XFE 0X80 0XB4 0XC4 0X8F 0XA6 0X98 0XA0 0X81 0X66 0X8B 0XB2 0X87 0X80 0X30 0X30 0X30 0X30 0X30 0X3D 0X55 0X32 0XFE 0XF6 0X90
+2026/04/15 19:41:01 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x03 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0xfe 0x80 0xb4 0xc4 0x8f 0xa6 0x98 0xa0 0x81 0x66 0x8b 0xb2 0x87 0x80 0x30 0x30 0x30 0x30 0x30 0x3d 0x55 0x32 0xfe
+	The received data is not corrupted (M2M)
+2026/04/15 19:41:01 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:41:01 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Service Information
+2026/04/15 19:41:01 ParsePackageMIRTEK.go:820: MT-packet (data, part: "service information") data parsed:
+	Serial Number: 1265801564002
+	Production date: 2000-1-1 (UNIX-date: 951260400)
+	RSSI: -95
+	RSRP: -102
+	RSRQ: -7.5
+	SINR: 32
+	Software Version: 102.1
+	Processor type (first letter): 
+	Base station ID: 60003B2
+2026/04/15 19:41:13 ServerTCP.go:183: The client has close connect: EOF
+2026/04/15 19:41:16 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 19:41:53 ServerTCP.go:408: =========== START PROGRAM  ===========
+2026/04/15 19:41:53 ServerTCP.go:427: Selected address for listening: 0.0.0.0:5001
+2026/04/15 19:41:53 ServerTCP.go:436: The server works at the host: 192.168.0.107
+2026/04/15 19:41:53 ServerTCP.go:447: Server is listening: 0.0.0.0:5001
+2026/04/15 19:41:54 ServerTCP.go:467: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 19:41:56 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 19:41:56 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 19:41:56 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 19:41:58 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X33 0X34 0X56 0X33 0X2E 0X36 0X30 0X52 0X31 0X36 0X31 0XFE 0X55 0X32 0X43 0X0E 0XE0
+2026/04/15 19:41:58 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x33 0x34 0x56 0x33 0x2e 0x36 0x30 0x52 0x31 0x36 0x31 0xfe 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 19:41:58 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:41:58 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 19:41:58 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.034
+	Battery charge: 3.60
+	Communication level: -95
+2026/04/15 19:41:59 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X33 0X34 0X56 0X33 0X2E 0X36 0X30 0X52 0X31 0X36 0X31 0XFE 0X55 0X32 0X43 0X0E 0XE0
+2026/04/15 19:41:59 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x33 0x34 0x56 0x33 0x2e 0x36 0x30 0x52 0x31 0x36 0x31 0xfe 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 19:41:59 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:41:59 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 19:41:59 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.034
+	Battery charge: 3.60
+	Communication level: -95
+2026/04/15 19:42:03 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X03 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0XFE 0X80 0XB4 0XC4 0X8F 0XA6 0X98 0XA0 0X81 0X66 0X8B 0XB2 0X87 0X80 0X30 0X30 0X30 0X30 0X30 0X3D 0X55 0X32 0XFE 0XF6 0X90
+2026/04/15 19:42:03 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x03 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0xfe 0x80 0xb4 0xc4 0x8f 0xa6 0x98 0xa0 0x81 0x66 0x8b 0xb2 0x87 0x80 0x30 0x30 0x30 0x30 0x30 0x3d 0x55 0x32 0xfe
+	The received data is not corrupted (M2M)
+2026/04/15 19:42:03 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:42:03 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Service Information
+2026/04/15 19:42:03 ParsePackageMIRTEK.go:820: MT-packet (data, part: "service information") data parsed:
+	Serial Number: 1265801564002
+	Production date: 2000-1-1 (UNIX-date: 951260400)
+	RSSI: -95
+	RSRP: -102
+	RSRQ: -7.5
+	SINR: 32
+	Software Version: 102.1
+	Processor type (first letter): 
+	Base station ID: 60003B2
+2026/04/15 19:42:13 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 19:42:58 ServerTCP.go:408: =========== START PROGRAM  ===========
+2026/04/15 19:42:58 ServerTCP.go:427: Selected address for listening: 0.0.0.0:5001
+2026/04/15 19:42:58 ServerTCP.go:436: The server works at the host: 192.168.0.107
+2026/04/15 19:42:58 ServerTCP.go:447: Server is listening: 0.0.0.0:5001
+2026/04/15 19:43:00 ServerTCP.go:467: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 19:43:04 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 19:43:04 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 19:43:04 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 19:43:05 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X33 0X34 0X56 0X33 0X2E 0X36 0X30 0X52 0X31 0X36 0X31 0XFE 0X55 0X32 0X43 0X0E 0XE0
+2026/04/15 19:43:05 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x33 0x34 0x56 0x33 0x2e 0x36 0x30 0x52 0x31 0x36 0x31 0xfe 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 19:43:05 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:43:05 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 19:43:05 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.034
+	Battery charge: 3.60
+	Communication level: -95
+2026/04/15 19:43:06 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X33 0X34 0X56 0X33 0X2E 0X36 0X30 0X52 0X31 0X36 0X31 0XFE 0X55 0X32 0X43 0X0E 0XE0
+2026/04/15 19:43:06 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x33 0x34 0x56 0x33 0x2e 0x36 0x30 0x52 0x31 0x36 0x31 0xfe 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 19:43:06 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:43:06 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 19:43:06 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.034
+	Battery charge: 3.60
+	Communication level: -95
+2026/04/15 19:43:14 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X03 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0XFE 0X80 0XB4 0XC4 0X8F 0XA6 0X98 0XA0 0X81 0X66 0X8B 0XB2 0X87 0X80 0X30 0X30 0X30 0X30 0X30 0X3D 0X55 0X32 0XFE 0XF6 0X90
+2026/04/15 19:43:14 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x03 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0xfe 0x80 0xb4 0xc4 0x8f 0xa6 0x98 0xa0 0x81 0x66 0x8b 0xb2 0x87 0x80 0x30 0x30 0x30 0x30 0x30 0x3d 0x55 0x32 0xfe
+	The received data is not corrupted (M2M)
+2026/04/15 19:43:14 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:43:14 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Service Information
+2026/04/15 19:43:14 ParsePackageMIRTEK.go:820: MT-packet (data, part: "service information") data parsed:
+	Serial Number: 1265801564002
+	Production date: 2000-1-1 (UNIX-date: 951260400)
+	RSSI: -95
+	RSRP: -102
+	RSRQ: -7.5
+	SINR: 32
+	Software Version: 102.1
+	Processor type (first letter): 
+	Base station ID: 60003B2
+2026/04/15 19:46:39 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 19:46:43 ServerTCP.go:424: =========== START PROGRAM  ===========
+2026/04/15 19:46:43 ServerTCP.go:443: Selected address for listening: 0.0.0.0:5001
+2026/04/15 19:46:43 ServerTCP.go:452: The server works at the host: 192.168.0.107
+2026/04/15 19:46:43 ServerTCP.go:463: Server is listening: 0.0.0.0:5001
+2026/04/15 19:46:47 ServerTCP.go:483: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 19:46:50 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 19:46:50 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 19:46:50 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 19:46:54 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X33 0X34 0X56 0X33 0X2E 0X36 0X30 0X52 0X31 0X36 0X31 0XFE 0X55 0X32 0X43 0X0E 0XE0
+2026/04/15 19:46:54 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x33 0x34 0x56 0x33 0x2e 0x36 0x30 0x52 0x31 0x36 0x31 0xfe 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 19:46:54 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:46:54 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 19:46:54 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.034
+	Battery charge: 3.60
+	Communication level: -95
+2026/04/15 19:46:55 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X33 0X34 0X56 0X33 0X2E 0X36 0X30 0X52 0X31 0X36 0X31 0XFE 0X55 0X32 0X43 0X0E 0XE0
+2026/04/15 19:46:55 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x33 0x34 0x56 0x33 0x2e 0x36 0x30 0x52 0x31 0x36 0x31 0xfe 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 19:46:55 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:46:55 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 19:46:55 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.034
+	Battery charge: 3.60
+	Communication level: -95
+2026/04/15 19:46:57 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X03 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0XFE 0X80 0XB4 0XC4 0X8F 0XA6 0X98 0XA0 0X81 0X66 0X8B 0XB2 0X87 0X80 0X30 0X30 0X30 0X30 0X30 0X3D 0X55 0X32 0XFE 0XF6 0X90
+2026/04/15 19:46:57 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x03 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0xfe 0x80 0xb4 0xc4 0x8f 0xa6 0x98 0xa0 0x81 0x66 0x8b 0xb2 0x87 0x80 0x30 0x30 0x30 0x30 0x30 0x3d 0x55 0x32 0xfe
+	The received data is not corrupted (M2M)
+2026/04/15 19:46:57 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:46:57 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Service Information
+2026/04/15 19:46:57 ParsePackageMIRTEK.go:820: MT-packet (data, part: "service information") data parsed:
+	Serial Number: 1265801564002
+	Production date: 2000-1-1 (UNIX-date: 951260400)
+	RSSI: -95
+	RSRP: -102
+	RSRQ: -7.5
+	SINR: 32
+	Software Version: 102.1
+	Processor type (first letter): 
+	Base station ID: 60003B2
+2026/04/15 19:47:50 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 19:49:03 ServerTCP.go:425: =========== START PROGRAM  ===========
+2026/04/15 19:49:03 ServerTCP.go:444: Selected address for listening: 0.0.0.0:5001
+2026/04/15 19:49:03 ServerTCP.go:453: The server works at the host: 192.168.0.107
+2026/04/15 19:49:03 ServerTCP.go:464: Server is listening: 0.0.0.0:5001
+2026/04/15 19:49:04 ServerTCP.go:484: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 19:49:06 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 19:49:06 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 19:49:06 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 19:49:07 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X33 0X34 0X56 0X33 0X2E 0X36 0X30 0X52 0X31 0X36 0X31 0XFE 0X55 0X32 0X43 0X0E 0XE0
+2026/04/15 19:49:07 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x33 0x34 0x56 0x33 0x2e 0x36 0x30 0x52 0x31 0x36 0x31 0xfe 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 19:49:07 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:49:07 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 19:49:07 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.034
+	Battery charge: 3.60
+	Communication level: -95
+2026/04/15 19:49:08 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X33 0X34 0X56 0X33 0X2E 0X36 0X30 0X52 0X31 0X36 0X31 0XFE 0X55 0X32 0X43 0X0E 0XE0
+2026/04/15 19:49:08 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x33 0x34 0x56 0x33 0x2e 0x36 0x30 0x52 0x31 0x36 0x31 0xfe 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 19:49:08 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:49:08 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 19:49:08 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.034
+	Battery charge: 3.60
+	Communication level: -95
+2026/04/15 19:49:09 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X03 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0XFE 0X80 0XB4 0XC4 0X8F 0XA6 0X98 0XA0 0X81 0X66 0X8B 0XB2 0X87 0X80 0X30 0X30 0X30 0X30 0X30 0X3D 0X55 0X32 0XFE 0XF6 0X90
+2026/04/15 19:49:09 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x03 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0xfe 0x80 0xb4 0xc4 0x8f 0xa6 0x98 0xa0 0x81 0x66 0x8b 0xb2 0x87 0x80 0x30 0x30 0x30 0x30 0x30 0x3d 0x55 0x32 0xfe
+	The received data is not corrupted (M2M)
+2026/04/15 19:49:09 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:49:09 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Service Information
+2026/04/15 19:49:09 ParsePackageMIRTEK.go:820: MT-packet (data, part: "service information") data parsed:
+	Serial Number: 1265801564002
+	Production date: 2000-1-1 (UNIX-date: 951260400)
+	RSSI: -95
+	RSRP: -102
+	RSRQ: -7.5
+	SINR: 32
+	Software Version: 102.1
+	Processor type (first letter): 
+	Base station ID: 60003B2
+2026/04/15 19:49:35 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 19:49:36 ServerTCP.go:425: =========== START PROGRAM  ===========
+2026/04/15 19:49:36 ServerTCP.go:444: Selected address for listening: 0.0.0.0:5001
+2026/04/15 19:49:36 ServerTCP.go:453: The server works at the host: 192.168.0.107
+2026/04/15 19:49:36 ServerTCP.go:464: Server is listening: 0.0.0.0:5001
+2026/04/15 19:49:38 ServerTCP.go:484: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 19:49:40 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 19:49:40 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 19:49:40 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 19:49:54 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X33 0X34 0X56 0X33 0X2E 0X36 0X30 0X52 0X31 0X36 0X31 0XFE 0X55 0X32 0X43 0X0E 0XE0
+2026/04/15 19:49:54 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x33 0x34 0x56 0x33 0x2e 0x36 0x30 0x52 0x31 0x36 0x31 0xfe 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 19:49:54 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:49:54 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 19:49:54 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.034
+	Battery charge: 3.60
+	Communication level: -95
+2026/04/15 19:50:00 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X33 0X34 0X56 0X33 0X2E 0X36 0X30 0X52 0X31 0X36 0X31 0XFE 0X55 0X32 0X43 0X0E 0XE0
+2026/04/15 19:50:00 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x33 0x34 0x56 0x33 0x2e 0x36 0x30 0x52 0x31 0x36 0x31 0xfe 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 19:50:00 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:50:00 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 19:50:00 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.034
+	Battery charge: 3.60
+	Communication level: -95
+2026/04/15 19:50:03 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X03 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0XFE 0X80 0XB4 0XC4 0X8F 0XA6 0X98 0XA0 0X81 0X66 0X8B 0XB2 0X87 0X80 0X30 0X30 0X30 0X30 0X30 0X3D 0X55 0X32 0XFE 0XF6 0X90
+2026/04/15 19:50:03 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x03 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0xfe 0x80 0xb4 0xc4 0x8f 0xa6 0x98 0xa0 0x81 0x66 0x8b 0xb2 0x87 0x80 0x30 0x30 0x30 0x30 0x30 0x3d 0x55 0x32 0xfe
+	The received data is not corrupted (M2M)
+2026/04/15 19:50:03 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 19:50:03 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Service Information
+2026/04/15 19:50:03 ParsePackageMIRTEK.go:820: MT-packet (data, part: "service information") data parsed:
+	Serial Number: 1265801564002
+	Production date: 2000-1-1 (UNIX-date: 951260400)
+	RSSI: -95
+	RSRP: -102
+	RSRQ: -7.5
+	SINR: 32
+	Software Version: 102.1
+	Processor type (first letter): 
+	Base station ID: 60003B2
+2026/04/15 19:50:08 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 19:55:27 ServerTCP.go:425: =========== START PROGRAM  ===========
+2026/04/15 19:55:27 ServerTCP.go:444: Selected address for listening: 0.0.0.0:5001
+2026/04/15 19:55:27 ServerTCP.go:453: The server works at the host: 192.168.0.107
+2026/04/15 19:55:27 ServerTCP.go:464: Server is listening: 0.0.0.0:5001
+2026/04/15 19:55:27 ServerTCP.go:484: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 19:55:31 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 19:55:31 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 19:55:31 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 19:56:35 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 19:59:50 ServerTCP.go:425: =========== START PROGRAM  ===========
+2026/04/15 19:59:50 ServerTCP.go:444: Selected address for listening: 0.0.0.0:5001
+2026/04/15 19:59:50 ServerTCP.go:453: The server works at the host: 192.168.0.107
+2026/04/15 19:59:50 ServerTCP.go:464: Server is listening: 0.0.0.0:5001
+2026/04/15 19:59:54 ServerTCP.go:484: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 19:59:56 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 19:59:56 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 19:59:56 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 20:00:04 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X35 0X35 0X56 0X33 0X2E 0X36 0X32 0X52 0X31 0X36 0X30 0XBC 0X55 0X32 0X43 0X32 0X43 0X0E 0XE0
+2026/04/15 20:00:04 ParsePackageMIRTEK.go:309: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x35 0x35 0x56 0x33 0x2e 0x36 0x32 0x52 0x31 0x36 0x30 0xbc 0x55 0x32 0x43
+!WARRING!
+	The received data(M2M) is corrupted: (get: 0XEE0 calculated CheckSum: 0XF69B)
+
+2026/04/15 20:00:04 ServerTCP.go:205: The received data(M2M) is corrupted: (get: 0XEE0 calculated CheckSum: 0XF69B)
+
+2026/04/15 20:03:47 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 21:03:32 ServerTCP.go:425: =========== START PROGRAM  ===========
+2026/04/15 21:03:32 ServerTCP.go:444: Selected address for listening: 0.0.0.0:5001
+2026/04/15 21:03:32 ServerTCP.go:453: The server works at the host: 192.168.0.107
+2026/04/15 21:03:32 ServerTCP.go:464: Server is listening: 0.0.0.0:5001
+2026/04/15 21:03:33 ServerTCP.go:484: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 21:03:37 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 21:03:37 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 21:03:37 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 21:03:39 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X35 0X35 0X56 0X33 0X2E 0X36 0X32 0X52 0X31 0X36 0X30 0XBC 0X55 0X32 0X43 0X32 0X43 0XBC 0X55
+2026/04/15 21:03:39 ParsePackageMIRTEK.go:309: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x35 0x35 0x56 0x33 0x2e 0x36 0x32 0x52 0x31 0x36 0x30 0xbc 0x55 0x32 0x43
+!WARRING!
+	The received data(M2M) is corrupted: (get: 0XBC55 calculated CheckSum: 0XF69B)
+
+2026/04/15 21:03:39 ServerTCP.go:205: The received data(M2M) is corrupted: (get: 0XBC55 calculated CheckSum: 0XF69B)
+
+2026/04/15 21:04:07 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 21:04:13 ServerTCP.go:425: =========== START PROGRAM  ===========
+2026/04/15 21:04:13 ServerTCP.go:444: Selected address for listening: 0.0.0.0:5001
+2026/04/15 21:04:13 ServerTCP.go:453: The server works at the host: 192.168.0.107
+2026/04/15 21:04:13 ServerTCP.go:464: Server is listening: 0.0.0.0:5001
+2026/04/15 21:04:14 ServerTCP.go:484: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 21:04:17 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X35 0X35 0X56 0X33 0X2E 0X36 0X32 0X52 0X31 0X36 0X30 0XBC 0X55 0X32 0X43 0X32 0X43 0XF6 0X9B
+2026/04/15 21:04:17 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x35 0x35 0x56 0x33 0x2e 0x36 0x32 0x52 0x31 0x36 0x30 0xbc 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 21:04:17 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 21:04:17 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 21:04:17 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.055
+	Battery charge: 3.62
+	Communication level: -96
+2026/04/15 21:04:19 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X35 0X35 0X56 0X33 0X2E 0X36 0X32 0X52 0X31 0X36 0X30 0XBC 0X55 0X32 0X43 0X32 0X43 0XF6 0X9B
+2026/04/15 21:04:19 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x35 0x35 0x56 0x33 0x2e 0x36 0x32 0x52 0x31 0x36 0x30 0xbc 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 21:04:19 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 21:04:19 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 21:04:19 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.055
+	Battery charge: 3.62
+	Communication level: -96
+2026/04/15 21:04:50 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 21:05:37 ServerTCP.go:425: =========== START PROGRAM  ===========
+2026/04/15 21:05:37 ServerTCP.go:444: Selected address for listening: 0.0.0.0:5001
+2026/04/15 21:05:37 ServerTCP.go:453: The server works at the host: 192.168.0.107
+2026/04/15 21:05:37 ServerTCP.go:464: Server is listening: 0.0.0.0:5001
+2026/04/15 21:05:42 ServerTCP.go:484: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 21:05:45 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 21:05:45 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 21:05:45 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 21:05:48 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X35 0X35 0X56 0X33 0X2E 0X36 0X32 0X52 0X31 0X36 0X30 0XBC 0X55 0X32 0X43 0X32 0X43 0XF6 0X9B
+2026/04/15 21:05:48 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x35 0x35 0x56 0x33 0x2e 0x36 0x32 0x52 0x31 0x36 0x30 0xbc 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 21:05:48 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 21:05:48 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 21:05:48 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.055
+	Battery charge: 3.62
+	Communication level: -96
+2026/04/15 21:05:50 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X02 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X35 0X35 0X56 0X33 0X2E 0X36 0X32 0X53 0X30 0X30 0X33 0X7C 0X55 0X32 0X43 0X32 0X43 0X7C 0X55
+2026/04/15 21:05:50 ParsePackageMIRTEK.go:309: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x02 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x35 0x35 0x56 0x33 0x2e 0x36 0x32 0x53 0x30 0x30 0x33 0x7c 0x55 0x32 0x43
+!WARRING!
+	The received data(M2M) is corrupted: (get: 0X7C55 calculated CheckSum: 0X9878)
+
+2026/04/15 21:05:50 ServerTCP.go:205: The received data(M2M) is corrupted: (get: 0X7C55 calculated CheckSum: 0X9878)
+
+2026/04/15 21:06:10 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 21:06:16 ServerTCP.go:425: =========== START PROGRAM  ===========
+2026/04/15 21:06:16 ServerTCP.go:444: Selected address for listening: 0.0.0.0:5001
+2026/04/15 21:06:16 ServerTCP.go:453: The server works at the host: 192.168.0.107
+2026/04/15 21:06:16 ServerTCP.go:464: Server is listening: 0.0.0.0:5001
+2026/04/15 21:06:17 ServerTCP.go:484: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 21:06:19 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 21:06:19 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 21:06:19 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 21:06:21 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X35 0X35 0X56 0X33 0X2E 0X36 0X32 0X52 0X31 0X36 0X30 0XBC 0X55 0X32 0X43 0X32 0X43 0XF6 0X9B
+2026/04/15 21:06:21 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x35 0x35 0x56 0x33 0x2e 0x36 0x32 0x52 0x31 0x36 0x30 0xbc 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 21:06:21 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 21:06:21 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 21:06:21 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.055
+	Battery charge: 3.62
+	Communication level: -96
+2026/04/15 21:06:23 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X02 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X35 0X35 0X56 0X33 0X2E 0X36 0X32 0X53 0X30 0X30 0X33 0X7C 0X55 0X32 0X43 0X32 0X43 0X98 0X78
+2026/04/15 21:06:23 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x02 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x35 0x35 0x56 0x33 0x2e 0x36 0x32 0x53 0x30 0x30 0x33 0x7c 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 21:06:23 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 21:06:23 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Archival
+2026/04/15 21:06:23 ParsePackageMIRTEK.go:667: MT-packet (data, part: "archival indication") data parsed:
+	archival indication: 00000.055
+	Battery charge: 3.62
+	Communication level: -253
+2026/04/15 21:06:26 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X03 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0XFE 0X80 0XB4 0XDA 0X8E 0XA5 0X98 0X84 0XA0 0X81 0X66 0X8D 0XB2 0X87 0X80 0X30 0X30 0X30 0X30 0X04 0X55 0X32 0XFE 0X32 0XFE 0XF6 0X90
+2026/04/15 21:06:26 ParsePackageMIRTEK.go:309: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x03 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0xfe 0x80 0xb4 0xda 0x8e 0xa5 0x98 0x84 0xa0 0x81 0x66 0x8d 0xb2 0x87 0x80 0x30 0x30 0x30 0x30 0x04 0x55 0x32 0xfe
+!WARRING!
+	The received data(M2M) is corrupted: (get: 0XF690 calculated CheckSum: 0X930E)
+
+2026/04/15 21:06:26 ServerTCP.go:205: The received data(M2M) is corrupted: (get: 0XF690 calculated CheckSum: 0X930E)
+
+2026/04/15 21:06:41 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 21:07:24 ServerTCP.go:425: =========== START PROGRAM  ===========
+2026/04/15 21:07:24 ServerTCP.go:444: Selected address for listening: 0.0.0.0:5001
+2026/04/15 21:07:24 ServerTCP.go:453: The server works at the host: 192.168.0.107
+2026/04/15 21:07:24 ServerTCP.go:464: Server is listening: 0.0.0.0:5001
+2026/04/15 21:07:26 ServerTCP.go:484: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 21:07:27 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 21:07:27 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 21:07:27 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 21:07:30 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X35 0X35 0X56 0X33 0X2E 0X36 0X32 0X52 0X31 0X36 0X30 0XBC 0X55 0X32 0X43 0X32 0X43 0XF6 0X9B
+2026/04/15 21:07:30 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x35 0x35 0x56 0x33 0x2e 0x36 0x32 0x52 0x31 0x36 0x30 0xbc 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 21:07:30 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 21:07:30 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 21:07:30 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.055
+	Battery charge: 3.62
+	Communication level: -96
+2026/04/15 21:07:31 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X02 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X35 0X35 0X56 0X33 0X2E 0X36 0X32 0X53 0X30 0X30 0X33 0X7C 0X55 0X32 0X43 0X32 0X43 0X98 0X78
+2026/04/15 21:07:31 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x02 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x35 0x35 0x56 0x33 0x2e 0x36 0x32 0x53 0x30 0x30 0x33 0x7c 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 21:07:31 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 21:07:31 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Archival
+2026/04/15 21:07:31 ParsePackageMIRTEK.go:667: MT-packet (data, part: "archival indication") data parsed:
+	archival indication: 00000.055
+	Battery charge: 3.62
+	Communication level: -253
+2026/04/15 21:07:32 ServerTCP.go:195: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X03 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0XFE 0X80 0XB4 0XDA 0X8E 0XA5 0X98 0X84 0XA0 0X81 0X66 0X8D 0XB2 0X87 0X80 0X30 0X30 0X30 0X30 0X04 0X55 0X32 0XFE 0X32 0XFE 0X93 0X0E
+2026/04/15 21:07:32 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x03 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0xfe 0x80 0xb4 0xda 0x8e 0xa5 0x98 0x84 0xa0 0x81 0x66 0x8d 0xb2 0x87 0x80 0x30 0x30 0x30 0x30 0x04 0x55 0x32 0xfe
+	The received data is not corrupted (M2M)
+2026/04/15 21:07:32 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 21:07:32 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Service Information
+2026/04/15 21:07:32 ParsePackageMIRTEK.go:820: MT-packet (data, part: "service information") data parsed:
+	Serial Number: 1265801564002
+	Production date: 2000-1-1 (UNIX-date: 951260400)
+	RSSI: -96
+	RSRP: -103
+	RSRQ: -7.5
+	SINR: 4
+	Software Version: 1.32
+	Processor type (first letter): f
+	Base station ID: 1D90D
+2026/04/15 21:07:32 ServerTCP.go:287: !Error! get "ID" (or filling) the "reference table" (ProductionUnixDate, RSSI, RSRP, RSRQ, SINR, SoftwareVersion, TypeProcessor, BaseStationId): pq: столбец "id" не существует at position 2:9 (42703)
+The data was not written to the Database.
+2026/04/15 21:07:42 ServerTCP.go:183: The client has close connect: EOF
+2026/04/15 21:08:00 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 21:36:05 ServerTCP.go:378: =========== START PROGRAM  ===========
+2026/04/15 21:36:05 ServerTCP.go:397: Selected address for listening: 0.0.0.0:5001
+2026/04/15 21:36:05 ServerTCP.go:406: The server works at the host: 192.168.0.107
+2026/04/15 21:36:05 ServerTCP.go:417: Server is listening: 0.0.0.0:5001
+2026/04/15 21:36:07 ServerTCP.go:437: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 21:36:09 ServerTCP.go:144: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 21:36:09 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 21:36:09 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 21:36:11 ServerTCP.go:144: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X35 0X35 0X56 0X33 0X2E 0X36 0X32 0X52 0X31 0X36 0X30 0XBC 0X55 0X32 0X43 0X32 0X43 0XF6 0X9B
+2026/04/15 21:36:11 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x35 0x35 0x56 0x33 0x2e 0x36 0x32 0x52 0x31 0x36 0x30 0xbc 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 21:36:11 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 21:36:11 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 21:36:11 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.055
+	Battery charge: 3.62
+	Communication level: -96
+2026/04/15 21:36:14 ServerTCP.go:144: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X02 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X35 0X35 0X56 0X33 0X2E 0X36 0X32 0X53 0X30 0X30 0X33 0X7C 0X55 0X32 0X43 0X32 0X43 0X98 0X78
+2026/04/15 21:36:14 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x02 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x35 0x35 0x56 0x33 0x2e 0x36 0x32 0x53 0x30 0x30 0x33 0x7c 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 21:36:14 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 21:36:14 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Archival
+2026/04/15 21:36:14 ParsePackageMIRTEK.go:667: MT-packet (data, part: "archival indication") data parsed:
+	archival indication: 00000.055
+	Battery charge: 3.62
+	Communication level: -253
+2026/04/15 21:36:18 ServerTCP.go:144: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X03 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0XFE 0X80 0XB4 0XDA 0X8E 0XA5 0X98 0X84 0XA0 0X81 0X66 0X8D 0XB2 0X87 0X80 0X30 0X30 0X30 0X30 0X04 0X55 0X32 0XFE 0X32 0XFE 0X93 0X0E
+2026/04/15 21:36:18 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x03 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0xfe 0x80 0xb4 0xda 0x8e 0xa5 0x98 0x84 0xa0 0x81 0x66 0x8d 0xb2 0x87 0x80 0x30 0x30 0x30 0x30 0x04 0x55 0x32 0xfe
+	The received data is not corrupted (M2M)
+2026/04/15 21:36:18 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 21:36:18 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Service Information
+2026/04/15 21:36:18 ParsePackageMIRTEK.go:820: MT-packet (data, part: "service information") data parsed:
+	Serial Number: 1265801564002
+	Production date: 2000-1-1 (UNIX-date: 951260400)
+	RSSI: -96
+	RSRP: -103
+	RSRQ: -7.5
+	SINR: 4
+	Software Version: 1.32
+	Processor type (first letter): f
+	Base station ID: 1D90D
+2026/04/15 21:36:18 ServerTCP.go:240: !Error! get "ID" (or filling) the "reference table" (ProductionUnixDate, RSSI, RSRP, RSRQ, SINR, SoftwareVersion, TypeProcessor, BaseStationId): pq: столбец "ID" не существует at position 4:13 (42703)
+The data was not written to the Database.
+2026/04/15 21:36:25 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 21:37:07 ServerTCP.go:378: =========== START PROGRAM  ===========
+2026/04/15 21:37:07 ServerTCP.go:397: Selected address for listening: 0.0.0.0:5001
+2026/04/15 21:37:07 ServerTCP.go:406: The server works at the host: 192.168.0.107
+2026/04/15 21:37:07 ServerTCP.go:417: Server is listening: 0.0.0.0:5001
+2026/04/15 21:37:09 ServerTCP.go:437: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 21:37:12 ServerTCP.go:144: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 21:37:12 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 21:37:12 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 21:37:15 ServerTCP.go:144: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X35 0X35 0X56 0X33 0X2E 0X36 0X32 0X52 0X31 0X36 0X30 0XBC 0X55 0X32 0X43 0X32 0X43 0XF6 0X9B
+2026/04/15 21:37:15 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x35 0x35 0x56 0x33 0x2e 0x36 0x32 0x52 0x31 0x36 0x30 0xbc 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 21:37:15 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 21:37:15 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 21:37:15 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.055
+	Battery charge: 3.62
+	Communication level: -96
+2026/04/15 21:37:16 ServerTCP.go:144: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X02 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X35 0X35 0X56 0X33 0X2E 0X36 0X32 0X53 0X30 0X30 0X33 0X7C 0X55 0X32 0X43 0X32 0X43 0X98 0X78
+2026/04/15 21:37:16 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x02 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x35 0x35 0x56 0x33 0x2e 0x36 0x32 0x53 0x30 0x30 0x33 0x7c 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 21:37:16 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 21:37:16 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Archival
+2026/04/15 21:37:16 ParsePackageMIRTEK.go:667: MT-packet (data, part: "archival indication") data parsed:
+	archival indication: 00000.055
+	Battery charge: 3.62
+	Communication level: -253
+2026/04/15 21:37:18 ServerTCP.go:144: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X03 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0XFE 0X80 0XB4 0XDA 0X8E 0XA5 0X98 0X84 0XA0 0X81 0X66 0X8D 0XB2 0X87 0X80 0X30 0X30 0X30 0X30 0X04 0X55 0X32 0XFE 0X32 0XFE 0X93 0X0E
+2026/04/15 21:37:18 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x03 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0xfe 0x80 0xb4 0xda 0x8e 0xa5 0x98 0x84 0xa0 0x81 0x66 0x8d 0xb2 0x87 0x80 0x30 0x30 0x30 0x30 0x04 0x55 0x32 0xfe
+	The received data is not corrupted (M2M)
+2026/04/15 21:37:18 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 21:37:18 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Service Information
+2026/04/15 21:37:18 ParsePackageMIRTEK.go:820: MT-packet (data, part: "service information") data parsed:
+	Serial Number: 1265801564002
+	Production date: 2000-1-1 (UNIX-date: 951260400)
+	RSSI: -96
+	RSRP: -103
+	RSRQ: -7.5
+	SINR: 4
+	Software Version: 1.32
+	Processor type (first letter): f
+	Base station ID: 1D90D
+2026/04/15 21:37:18 ServerTCP.go:367: The data was recorded in the database
+2026/04/15 21:38:09 ServerTCP.go:132: The client has close connect: EOF
+2026/04/15 21:38:11 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========
+2026/04/15 21:43:47 ServerTCP.go:377: =========== START PROGRAM  ===========
+2026/04/15 21:43:47 ServerTCP.go:396: Selected address for listening: 0.0.0.0:5001
+2026/04/15 21:43:47 ServerTCP.go:405: The server works at the host: 192.168.0.107
+2026/04/15 21:43:47 ServerTCP.go:416: Server is listening: 0.0.0.0:5001
+2026/04/15 21:43:48 ServerTCP.go:436: Connect with the client at the address: 192.168.0.107:5001
+2026/04/15 21:43:57 ServerTCP.go:144: Get data: 0X24 0X01 0X56 0X40 0X02 0X00 0X00 0X18 0X00 0X10 0X40 0X00 0X38 0X39 0X33 0X37 0X35 0X30 0X32 0X37 0X36 0X30 0X30 0X30 0X30 0X30 0X30 0X35 0X31 0X36 0X38 0X36 0X41 0X5E
+2026/04/15 21:43:57 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 24
+	Request package (type: 0)
+	Data: 0x00 0x10 0x40 0x00 0x38 0x39 0x33 0x37 0x35 0x30 0x32 0x37 0x36 0x30 0x30 0x30 0x30 0x30 0x30 0x35 0x31 0x36 0x38 0x36
+	The received data is not corrupted (M2M)
+2026/04/15 21:43:57 ParsePackageMIRTEK.go:410: MT-packet (request) data parsed:
+	Type (water): 16
+	Status: 64
+	PingInt: 0
+	ICCID: 893750276000000516
+	RSSI: 54
+2026/04/15 21:43:58 ServerTCP.go:144: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X01 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X35 0X35 0X56 0X33 0X2E 0X36 0X32 0X52 0X31 0X36 0X30 0XBC 0X55 0X32 0X43 0X32 0X43 0XF6 0X9B
+2026/04/15 21:43:58 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x01 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x35 0x35 0x56 0x33 0x2e 0x36 0x32 0x52 0x31 0x36 0x30 0xbc 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 21:43:58 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 21:43:58 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Current
+2026/04/15 21:43:58 ParsePackageMIRTEK.go:667: MT-packet (data, part: "current indication") data parsed:
+	current indication: 00000.055
+	Battery charge: 3.62
+	Communication level: -96
+2026/04/15 21:43:59 ServerTCP.go:144: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X02 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0X43 0X30 0X30 0X30 0X30 0X30 0X2E 0X30 0X35 0X35 0X56 0X33 0X2E 0X36 0X32 0X53 0X30 0X30 0X33 0X7C 0X55 0X32 0X43 0X32 0X43 0X98 0X78
+2026/04/15 21:43:59 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x02 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0x43 0x30 0x30 0x30 0x30 0x30 0x2e 0x30 0x35 0x35 0x56 0x33 0x2e 0x36 0x32 0x53 0x30 0x30 0x33 0x7c 0x55 0x32 0x43
+	The received data is not corrupted (M2M)
+2026/04/15 21:43:59 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 21:43:59 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Archival
+2026/04/15 21:43:59 ParsePackageMIRTEK.go:667: MT-packet (data, part: "archival indication") data parsed:
+	archival indication: 00000.055
+	Battery charge: 3.62
+	Communication level: -253
+2026/04/15 21:44:00 ServerTCP.go:144: Get data: 0X24 0X01 0X56 0X40 0X02 0X01 0X00 0X30 0X73 0X55 0X1F 0X00 0XFF 0XFF 0X00 0XFF 0X07 0X0A 0X01 0X10 0X00 0X03 0X44 0X35 0X38 0X30 0X31 0X35 0X36 0X34 0X30 0X30 0X32 0XFE 0X80 0XB4 0XDA 0X8E 0XA5 0X98 0X84 0XA0 0X81 0X66 0X8D 0XB2 0X87 0X80 0X30 0X30 0X30 0X30 0X04 0X55 0X32 0XFE 0X32 0XFE 0X93 0X0E
+2026/04/15 21:44:00 ParsePackageMIRTEK.go:302: M2M-packet data parsed:
+	Gateway: 1564002
+	Number of bytes allocate to data: 48
+	Data package (type: 1)
+	Data: 0x73 0x55 0x1f 0x00 0xff 0xff 0x00 0xff 0x07 0x0a 0x01 0x10 0x00 0x03 0x44 0x35 0x38 0x30 0x31 0x35 0x36 0x34 0x30 0x30 0x32 0xfe 0x80 0xb4 0xda 0x8e 0xa5 0x98 0x84 0xa0 0x81 0x66 0x8d 0xb2 0x87 0x80 0x30 0x30 0x30 0x30 0x04 0x55 0x32 0xfe
+	The received data is not corrupted (M2M)
+2026/04/15 21:44:00 ParsePackageMIRTEK.go:452: Byte Stuffing is not needed
+2026/04/15 21:44:00 ParsePackageMIRTEK.go:574: MT-packet (data, part: "info") data parsed:
+	Destination: 65535
+	Source: 255
+	Command: 7
+	Status: [A 1 10 0]
+	Type Package: Service Information
+2026/04/15 21:44:00 ParsePackageMIRTEK.go:820: MT-packet (data, part: "service information") data parsed:
+	Serial Number: 1265801564002
+	Production date: 2000-1-1 (UNIX-date: 951260400)
+	RSSI: -96
+	RSRP: -103
+	RSRQ: -7.5
+	SINR: 4
+	Software Version: 1.32
+	Processor type (first letter): f
+	Base station ID: 1D90D
+2026/04/15 21:44:00 ServerTCP.go:366: The data has been written to the database
+2026/04/15 21:44:03 ServerTCP.go:132: The client has close connect: EOF
+2026/04/15 21:44:07 ServerTCP.go:59: =========== END PROGRAM (SIGINT) ===========

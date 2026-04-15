@@ -4,6 +4,7 @@
         "MIRTEK",
         "RSRP",
         "RSRQ",
-        "RSSI"
+        "RSSI",
+        "SINR"
     ]
 }

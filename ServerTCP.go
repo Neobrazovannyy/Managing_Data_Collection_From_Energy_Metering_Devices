@@ -16,40 +16,35 @@ import (
 	"github.com/spf13/viper"
 
 	"PowerMonitor/lib/ParsePackageMIRTEK"
-	"PowerMonitor/lib/PopulateDataBaseMIRTEK"
+	"PowerMonitor/lib/SeedDataBaseMIRTEK"
 )
 
 
-type Gateway struct {
+type MT_Gateway struct {
 	Gateway int
 }
 
-type CurrentIndication struct {
+type MT_Indication struct {
 	Indication string
 	BatteryCharge string
 	CommunicationLevel string
 }
 
-type ArchivalIndication struct {
-	Indication string
-	BatteryCharge string
-	CommunicationLevel string
-}
-
-type Info struct {
+type MT_Info struct {
 	Destination uint16
 	Source uint16
 	Status string
 }
 
-type ServiceInfo struct {
+type MT_ServiceInfo struct {
 	SerialNumber string
+	// other reference tables
 	ICCID string
-	// other single tables
 	ProductionUnixDate int
 	RSSI int
 	RSRP int
 	RSRQ float32
+	SINR int
 	SoftwareVersion string
 	TypeProcessor string
 	BaseStationId string
@@ -120,11 +115,14 @@ func (logger *LoggerServerTCP) GetDataClient(conn_client net.Conn) {
 	// net.Conn - interface, this is already a "pointer" to a specific implementation
 	defer conn_client.Close()
 	// create db struct
-	var gateway_db Gateway
-	var current_indication_db CurrentIndication
-	var archival_indication_db ArchivalIndication
-	var info_db Info
-	var service_info_db ServiceInfo
+	var gateway_db MT_Gateway
+	var current_indication_db MT_Indication
+	var archival_indication_db MT_Indication
+	var info_db MT_Info
+	var service_info_db MT_ServiceInfo
+
+	// Packages{request, curr_indic, arch_indic, service_info}
+	var check_get_packages uint8=0xff
 
 	for{
 		buf:=make([]byte, 1024)
@@ -166,6 +164,7 @@ func (logger *LoggerServerTCP) GetDataClient(conn_client net.Conn) {
 
 		switch m2m_type{
 		case 0:	// type: request
+			check_get_packages=check_get_packages<<2
 			service_info_db.ICCID=parsMIRTEK.ParseMTPackageRequest(m2m_data, logger.Logger)
 		case 1:	// type: data
 			m2m_data_stuffing, err_stuffing := parsMIRTEK.PreparingMTPackage(m2m_data, logger.Logger)
@@ -183,116 +182,189 @@ func (logger *LoggerServerTCP) GetDataClient(conn_client net.Conn) {
 
 			switch mt_type_package{
 			case 1:	// Current
+				check_get_packages=check_get_packages<<2
 				current_indication_db.Indication,
 				current_indication_db.BatteryCharge,
 				current_indication_db.CommunicationLevel=parsMIRTEK.ParseMTPackageData_CurrentOrArchivalIndication("current", m2m_data_stuffing[25:], logger.Logger)
 			case 2:	// Archival
+				check_get_packages=check_get_packages<<2
 				archival_indication_db.Indication,
 				archival_indication_db.BatteryCharge,
 				archival_indication_db.CommunicationLevel=parsMIRTEK.ParseMTPackageData_CurrentOrArchivalIndication("archival", m2m_data_stuffing[25:], logger.Logger)
 			case 3:	// Service Information
+				check_get_packages=check_get_packages<<2
 				service_info_db.SerialNumber,
 				service_info_db.ProductionUnixDate,
 				service_info_db.RSSI,
 				service_info_db.RSRP,
 				service_info_db.RSRQ,
+				service_info_db.SINR,
 				service_info_db.SoftwareVersion,
 				service_info_db.TypeProcessor,
 				service_info_db.BaseStationId=parsMIRTEK.ParseMTPackageData_ServiceInformation(m2m_data_stuffing[15:], logger.Logger)
 			}
 		}
 
+// 		fmt.Println("------------------------------------------------------------------------------->ТАК А ЧЕ, А ГДЕ")
+	// fmt.Printf(`
+	// === After Reset ===
+	// Gateway: %v
+	// Current Indication: Indication=%q, BatteryCharge=%q, CommunicationLevel=%q
+	// Archival Indication: Indication=%q, BatteryCharge=%q, CommunicationLevel=%q
+	// Info: Destination=%d, Source=%d, Status=%q
+	// Service Info: SerialNumber=%q, ICCID=%q, ProductionUnixDate=%d, RSSI=%d, RSRP=%d, RSRQ=%.2f, SINR=%d, SoftwareVersion=%q, TypeProcessor=%q, BaseStationId=%q
+	// `,
+	// 	gateway_db.Gateway,
+	// 	current_indication_db.Indication, current_indication_db.BatteryCharge, current_indication_db.CommunicationLevel,
+	// 	archival_indication_db.Indication, archival_indication_db.BatteryCharge, archival_indication_db.CommunicationLevel,
+	// 	info_db.Destination, info_db.Source, info_db.Status,
+	// 	service_info_db.SerialNumber, service_info_db.ICCID, service_info_db.ProductionUnixDate,
+	// 	service_info_db.RSSI, service_info_db.RSRP, service_info_db.RSRQ, service_info_db.SINR,
+	// 	service_info_db.SoftwareVersion, service_info_db.TypeProcessor, service_info_db.BaseStationId,
+// )
+
+		if check_get_packages==0x00{
+			logger.SeedDataBase(gateway_db, current_indication_db, archival_indication_db, info_db, service_info_db)
+			check_get_packages=0xff
+		}
 	}
 
-	logger.PopulateDataBase(gateway_db, current_indication_db, archival_indication_db, info_db, service_info_db)
 }
 
-func (logger *LoggerServerTCP) PopulateDataBase(gateway_db Gateway, current_indication_db CurrentIndication, archival_indication_db ArchivalIndication, info_db Info, service_info_db ServiceInfo) {
-	local_path_db:="mtdb.sqlite"
+func (logger *LoggerServerTCP) SeedDataBase(gateway_db MT_Gateway, current_indication_db MT_Indication, archival_indication_db MT_Indication, info_db MT_Info, service_info_db MT_ServiceInfo) {
+	str_conn_db:=fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", "localhost", 5432, "postgres", "r00t13", "mtdb")
+	check:=func(description string, err error) bool{
+		if err!=nil{
+			dis:=fmt.Sprintf(description, err)
+			logger.Printf(dis)
+			fmt.Printf(dis)
+			return true
+		}
+		return false
+	}
 
-	path_exe, err_ex := os.Executable()
-	if err_ex != nil {
-		logger.Printf("!Error! Mdaaaaa: %s\nThe data was not written to the Database.\n", err_ex)
-		fmt.Printf("!Error! Mdaaaaa: %s\nThe data was not written to the Database.\n", err_ex)
+	connDB, err:=SeedDataBaseMIRTEK.OpenBD(str_conn_db)
+	if check("!Error! open db(sqlite): %s\nThe data was not written to the Database.\n", err){
+		return
+	}
+	defer connDB.CloseBD()
+
+	max_open_conn:=15
+	max_idle_conn:=5
+	max_life_time:=10 * time.Minute
+	max_idle_time:=5 * time.Minute
+	err=connDB.SetConfigPooling(max_open_conn, max_idle_conn, max_life_time, max_idle_time)
+	if check("!Error! database connections: %s\nThe data was not written to the Database.\n", err){
 		return
 	}
 
-	full_path_db := path.Join(filepath.Dir(path_exe), "db", local_path_db)
-
-	file_db, err:=PopulateDataBaseMIRTEK.OpenBD(full_path_db)
-	if err!=nil{
-		logger.Printf("!Error! open db(sqlite): %s\nThe data was not written to the Database.\n", err)
-		fmt.Printf("!Error! open db(sqlite): %s\nThe data was not written to the Database.\n", err)
-		return
-	}
-	defer file_db.CloseBD()
-
-	err=file_db.SetConfigPooling()
-	if err!=nil{
-		logger.Printf("!Error! database connections: %s\nThe data was not written to the Database.\n", err)
-		fmt.Printf("!Error! database connections: %s\nThe data was not written to the Database.\n", err)
-		return
-	}
-
-	//Writing constant data Reference Tables.
-	var list_const_table_id [7]int
-	list_const_table_id, err=file_db.InsertReferenceTables(
-		service_info_db.ProductionUnixDate,
-		service_info_db.RSSI,
-		service_info_db.RSRP,
-		service_info_db.RSRQ,
-		service_info_db.SoftwareVersion,
-		service_info_db.TypeProcessor,
-		service_info_db.BaseStationId,
-	)
-	if err!=nil{
-		logger.Printf("!Error! filling the constant table (ProductionUnixDate, RSSI, RSRP, RSRQ, SoftwareVersion, TypeProcessor, BaseStationId): %s\nThe data was not written to the Database.\n", err)
-		fmt.Printf("!Error! filling the constant table (ProductionUnixDate, RSSI, RSRP, RSRQ, SoftwareVersion, TypeProcessor, BaseStationId): %s\nThe data was not written to the Database.\n", err)
-		return
-	}
+	//Find time for "CurrentIndication" and "ArchivalIndication"
+	time_now:=time.Now()
+	// for "CurrentIndication"
+	time_curr_indic:=time_now.Unix()
+	// for "ArchivalIndication"
+	time_arch_indic:=time.Date(time_now.Year(), time_now.Month(), time_now.Day(), 0, 0, 0, 0, time_now.Location()).Unix()
 	
-	//Checks whether such a "Gateway" exists. If it does, it returns its "name gateway"; if it doesn't, it returns -1.
-	gateway_id, err:=file_db.CheckGatewayId(gateway_db.Gateway)
+	// Let's check if we recorded any archived data today, corresponding to a specific gateway?
+	arch_indic_id, err:=connDB.ExistsArchivalIndicationGateway(gateway_db.Gateway, int(time_arch_indic))
+	if check("!Error! exist \"Archival Indication\": %s\nThe data was not written to the Database.\n", err){
+		return
+	}
 
-	//Get
-	archival_indication_id, err:=file_db.GetArchivalIndicationId(gateway_db.Gateway)
+	var gateway_id int
+	// If there was no entry in the "Archival Indication" table today
+	// Creating data ("Reference Tables", "Service Info", "Info", "Gateway") for the "Archival Indication"
+	if arch_indic_id==-1{
+		//Fill in the "Reference Table" tables and get the ID's
+		var list_reference_table_id [9]int
+		list_reference_table_id, err=connDB.EnsureReferenceTables(
+			service_info_db.ICCID,
+			service_info_db.ProductionUnixDate,
+			service_info_db.RSSI,
+			service_info_db.RSRP,
+			service_info_db.RSRQ,
+			service_info_db.SINR,
+			service_info_db.SoftwareVersion,
+			service_info_db.TypeProcessor,
+			service_info_db.BaseStationId,
+		)
+		if check("!Error! get \"ID\" (or filling) the \"reference table\" (ProductionUnixDate, RSSI, RSRP, RSRQ, SINR, SoftwareVersion, TypeProcessor, BaseStationId): %s\nThe data was not written to the Database.\n", err){
+			return
+		}
 
+		//Fill in the "ServiceInfo" tables and get the "ID"
+		service_info_id, err:=connDB.EnsureServiceInfo(service_info_db.SerialNumber, list_reference_table_id)
+		if check("!Error! get \"ID\" (or filling) the \"ServiceInfo\" table (SerialNumber, list_ReferenceTable): %s\nThe data was not written to the Database.\n", err){
+			return
+		}
 
+		//Fill in the "Info" tables and get the "ID"
+		info_id, err:=connDB.EnsureInfo(
+			info_db.Destination,
+			info_db.Source,
+			info_db.Status,
+		)
+		if check("!Error! get \"ID\" (or filling) the \"Info\" table (Destination, Source, Status): %s\nThe data was not written to the Database.\n", err){
+			return
+		}
+		
+		//Fill in the "Gateway" tables and get the "ID"
+		gateway_id, err=connDB.EnsureGateway(gateway_db.Gateway)
+		if check("!Error! get \"ID\" (or filling) the \"Gateway\" table: %s\nThe data was not written to the Database.\n", err){
+			return
+		}
+		
+		//Fill in the "ArchivalIndication" tables
+		err=connDB.InsertArchivalIndication(
+			archival_indication_db.Indication,
+			archival_indication_db.BatteryCharge,
+			archival_indication_db.CommunicationLevel,
+			int(time_arch_indic),
+			info_id,
+			service_info_id,
+			gateway_id,
+		)
+		if check("!Error! filling the \"ArchivalIndication\" table: %s\nThe data was not written to the Database.\n", err){
+			return
+		}
 
-	//,kzzzzzzzzzzzzzzzzzzzzzzzz........................
+	} else{
+		//Fill in the "Gateway" tables and get the "ID"
+		gateway_id, err=connDB.EnsureGateway(gateway_db.Gateway)
+		if check("!Error! get \"ID\" (or filling) the \"Gateway\" table: %s\nThe data was not written to the Database.\n", err){
+			return
+		}
+	}
 
-	info_id, err:=file_db.PopulateTableInfo(
+	// Fill in the "CurrentIndication" tables (curr_indic_id)
+	err=connDB.UpdataCurrentIndication(
+		gateway_id,
+		current_indication_db.Indication,
+		current_indication_db.BatteryCharge,
+		current_indication_db.CommunicationLevel,
+		time_curr_indic,
+		// Info
 		info_db.Destination,
 		info_db.Source,
 		info_db.Status,
-	)
-	if err!=nil{
-		logger.Printf("!Error! filling the \"Info\" table: %s\nThe data was not written to the Database.\n", err)
-		fmt.Printf("!Error! filling the \"Info\" table: %s\nThe data was not written to the Database.\n", err)
-		return
-	}
-
-	// var info_service_info
-	info_service_info, err:=file_db.PopulateTableServiceInfo(
+		// Service Info
 		service_info_db.SerialNumber,
 		service_info_db.ICCID,
-		// other single tables
 		service_info_db.ProductionUnixDate,
 		service_info_db.RSSI,
 		service_info_db.RSRP,
 		service_info_db.RSRQ,
+		service_info_db.SINR,
 		service_info_db.SoftwareVersion,
 		service_info_db.TypeProcessor,
 		service_info_db.BaseStationId,
 	)
-	if err!=nil{
-		logger.Printf("!Error! filling the \"ServiceInfo\" table: %s\nThe data was not written to the Database.\n", err)
-		fmt.Printf("!Error! filling the \"ServiceInfo\" table: %s\nThe data was not written to the Database.\n", err)
+	if check("!Error! Update the \"CurrentIndication\" table: %s\nThe data was not update to the Database.\n", err){
 		return
 	}
-	
-	file_db.PopulateTableCurrentIndication(info_id, info_service_info)
 
+	logger.Printf("The data has been written to the database\n")
+	fmt.Printf("The data has been written to the database\n")
 }
 
 
