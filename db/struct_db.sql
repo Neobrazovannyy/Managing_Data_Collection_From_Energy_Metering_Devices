@@ -4,6 +4,11 @@ CREATE DATABASE mtdb;
 
 \connect mtdb
 
+CREATE TABLE "SerialNumber" (
+	"Id" SERIAL PRIMARY KEY,
+	"SerialNumber" INTEGER NOT NULL UNIQUE
+);
+
 CREATE TABLE "Gateway" (
 	"Id" SERIAL PRIMARY KEY,
 	"Gateway" INTEGER NOT NULL UNIQUE
@@ -11,6 +16,7 @@ CREATE TABLE "Gateway" (
 
 CREATE TABLE "CurrentIndication" (
 	"Id" SERIAL PRIMARY KEY,
+	"SerialNumberId" INTEGER REFERENCES "SerialNumber"("Id"),
 	"GatewayId" INTEGER REFERENCES "Gateway"("Id"),
 	"Indication" TEXT,
 	"BatteryCharge" TEXT,
@@ -21,7 +27,7 @@ CREATE TABLE "CurrentIndication" (
 	"Source" INTEGER,
 	"Status" TEXT,
 	-- Service Info
-	"SerialNumber" TEXT,
+	"FirstThreeDigitsSerialNumber" TEXT,
 	"ICCID" TEXT,
 	"ProductionUnixDate" INTEGER,
 	"RSSI" INTEGER,
@@ -39,7 +45,6 @@ CREATE TABLE "Info" (
 	"Source" INTEGER,
 	"Status" TEXT
 );
-
 
 CREATE TABLE "ICCID" (
 	"Id" SERIAL PRIMARY KEY,
@@ -88,7 +93,7 @@ CREATE TABLE "BaseStationId" (
 
 CREATE TABLE "ServiceInfo" (
 	"Id" SERIAL PRIMARY KEY,
-	"SerialNumber" TEXT,
+	"FirstThreeDigitsOfSerialNumber" TEXT,
 	"ICCIDId" INTEGER REFERENCES "ICCID"("Id"),
 	"ProductionDateId" INTEGER REFERENCES "ProductionUnixDate"("Id"),
 	"RSSIId" INTEGER REFERENCES "RSSI"("Id"),
@@ -108,6 +113,7 @@ CREATE TABLE "ArchivalIndication" (
     "UnixDateGetData" INTEGER,
 	"InfoId" INTEGER REFERENCES "Info"("Id"),
 	"ServiceInfoId" INTEGER REFERENCES "ServiceInfo"("Id"),
+	"SerialNumberId" INTEGER REFERENCES "SerialNumber"("Id"),
 	"GatewayId" INTEGER REFERENCES "Gateway"("Id")
 );
 

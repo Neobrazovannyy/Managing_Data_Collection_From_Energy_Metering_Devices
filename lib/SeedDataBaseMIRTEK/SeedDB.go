@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"database/sql" //interface
+
 	_ "github.com/lib/pq" //driver
 )
 
@@ -51,7 +52,7 @@ func (db *dbSQLite) SetConfigPooling(max_open_conn int, max_idle_conn int, max_l
 	# Params:
 		Gateway int, UnixDateGetData int.
 	# Returns:
-		Gateway.Id (or -1) - "Returns the ArchivalIndication ID; if there is no corresponding gateway, it will return -1.".
+		ArchivalIndication.Id (or -1) - "Returns the ArchivalIndication ID; if there is no corresponding gateway, it will return -1.".
 	# Logics:
 		()<--(gateway, now_date)
 		if exists(ArchivalIndication_Gateway{gateway, now_date}):

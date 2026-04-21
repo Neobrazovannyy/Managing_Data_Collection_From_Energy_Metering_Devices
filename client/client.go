@@ -117,7 +117,7 @@ func main(){
 		}
 	}
 }
-// go build client.go && ./client.exe 192.168.0.107
+// go build client.go && ./client.exe 192.168.0.107:5001
 /*
 net.Dial() - высокоуровневая абстракция
 	Возвращаемый тип": net.Conn (интерфейс)

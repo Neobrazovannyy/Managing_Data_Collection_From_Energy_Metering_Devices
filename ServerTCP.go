@@ -16,7 +16,7 @@ import (
 	"github.com/spf13/viper"
 
 	"PowerMonitor/lib/ParsePackageMIRTEK"
-	"PowerMonitor/lib/SeedDataBaseMIRTEK"
+	// "PowerMonitor/lib/SeedDataBaseMIRTEK"
 )
 
 
@@ -25,6 +25,7 @@ type MT_Gateway struct {
 }
 
 type MT_Indication struct {
+	SerialNumber string
 	Indication string
 	BatteryCharge string
 	CommunicationLevel string
@@ -37,7 +38,7 @@ type MT_Info struct {
 }
 
 type MT_ServiceInfo struct {
-	SerialNumber string
+	FirstThreeDigitsOfSerialNumber string
 	// other reference tables
 	ICCID string
 	ProductionUnixDate int
@@ -70,7 +71,7 @@ func SetLoggerMasterWorker() *log.Logger {
 	}
 
 	year_log, month_log, day_log :=time.Now().Date()
-	name_file_logger:=fmt.Sprintf("LogServerTCP-%d-%d-%d.log", day_log, month_log, year_log)
+	name_file_logger:=fmt.Sprintf("LogServerTCP-%d-%d-%d.log", year_log, month_log, day_log)
 
 	var path_file_log string = path.Join(filepath.Dir(path_exe), "log", name_file_logger)
 	var flags_file_log int = os.O_APPEND | os.O_CREATE | os.O_WRONLY
@@ -149,7 +150,7 @@ func (logger *LoggerServerTCP) GetDataClient(conn_client net.Conn) {
 
 		/*----- Parsing M2M-package -----*/
 
-		m2m_gateway, m2m_type, m2m_data, m2m_err :=parsMIRTEK.ParseM2MPackage(get_data, num_byte, logger.Logger)
+		m2m_gateway, m2m_type, m2m_data, m2m_err :=parsMIRTEK.ParseM2MPackage(get_data, logger.Logger)
 		if m2m_err!=nil{
 			logger.Printf("%s\n", m2m_err)
 			fmt.Printf("%s\n", m2m_err)
@@ -183,17 +184,19 @@ func (logger *LoggerServerTCP) GetDataClient(conn_client net.Conn) {
 			switch mt_type_package{
 			case 1:	// Current
 				check_get_packages=check_get_packages<<2
+				current_indication_db.SerialNumber,
 				current_indication_db.Indication,
 				current_indication_db.BatteryCharge,
-				current_indication_db.CommunicationLevel=parsMIRTEK.ParseMTPackageData_CurrentOrArchivalIndication("current", m2m_data_stuffing[25:], logger.Logger)
+				current_indication_db.CommunicationLevel=parsMIRTEK.ParseMTPackageData_CurrentOrArchivalIndication("current", m2m_data_stuffing, logger.Logger)
 			case 2:	// Archival
 				check_get_packages=check_get_packages<<2
+				current_indication_db.SerialNumber,
 				archival_indication_db.Indication,
 				archival_indication_db.BatteryCharge,
-				archival_indication_db.CommunicationLevel=parsMIRTEK.ParseMTPackageData_CurrentOrArchivalIndication("archival", m2m_data_stuffing[25:], logger.Logger)
+				archival_indication_db.CommunicationLevel=parsMIRTEK.ParseMTPackageData_CurrentOrArchivalIndication("archival", m2m_data_stuffing, logger.Logger)
 			case 3:	// Service Information
 				check_get_packages=check_get_packages<<2
-				service_info_db.SerialNumber,
+				service_info_db.FirstThreeDigitsOfSerialNumber,
 				service_info_db.ProductionUnixDate,
 				service_info_db.RSSI,
 				service_info_db.RSRP,
@@ -201,36 +204,19 @@ func (logger *LoggerServerTCP) GetDataClient(conn_client net.Conn) {
 				service_info_db.SINR,
 				service_info_db.SoftwareVersion,
 				service_info_db.TypeProcessor,
-				service_info_db.BaseStationId=parsMIRTEK.ParseMTPackageData_ServiceInformation(m2m_data_stuffing[15:], logger.Logger)
+				service_info_db.BaseStationId=parsMIRTEK.ParseMTPackageData_ServiceInformation(m2m_data_stuffing, logger.Logger)
 			}
 		}
 
-// 		fmt.Println("------------------------------------------------------------------------------->ТАК А ЧЕ, А ГДЕ")
-	// fmt.Printf(`
-	// === After Reset ===
-	// Gateway: %v
-	// Current Indication: Indication=%q, BatteryCharge=%q, CommunicationLevel=%q
-	// Archival Indication: Indication=%q, BatteryCharge=%q, CommunicationLevel=%q
-	// Info: Destination=%d, Source=%d, Status=%q
-	// Service Info: SerialNumber=%q, ICCID=%q, ProductionUnixDate=%d, RSSI=%d, RSRP=%d, RSRQ=%.2f, SINR=%d, SoftwareVersion=%q, TypeProcessor=%q, BaseStationId=%q
-	// `,
-	// 	gateway_db.Gateway,
-	// 	current_indication_db.Indication, current_indication_db.BatteryCharge, current_indication_db.CommunicationLevel,
-	// 	archival_indication_db.Indication, archival_indication_db.BatteryCharge, archival_indication_db.CommunicationLevel,
-	// 	info_db.Destination, info_db.Source, info_db.Status,
-	// 	service_info_db.SerialNumber, service_info_db.ICCID, service_info_db.ProductionUnixDate,
-	// 	service_info_db.RSSI, service_info_db.RSRP, service_info_db.RSRQ, service_info_db.SINR,
-	// 	service_info_db.SoftwareVersion, service_info_db.TypeProcessor, service_info_db.BaseStationId,
-// )
-
 		if check_get_packages==0x00{
-			logger.SeedDataBase(gateway_db, current_indication_db, archival_indication_db, info_db, service_info_db)
+			// logger.SeedDataBase(gateway_db, current_indication_db, archival_indication_db, info_db, service_info_db)
 			check_get_packages=0xff
 		}
 	}
 
 }
 
+/*
 func (logger *LoggerServerTCP) SeedDataBase(gateway_db MT_Gateway, current_indication_db MT_Indication, archival_indication_db MT_Indication, info_db MT_Info, service_info_db MT_ServiceInfo) {
 	str_conn_db:=fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", "localhost", 5432, "postgres", "r00t13", "mtdb")
 	check:=func(description string, err error) bool{
@@ -366,7 +352,7 @@ func (logger *LoggerServerTCP) SeedDataBase(gateway_db MT_Gateway, current_indic
 	logger.Printf("The data has been written to the database\n")
 	fmt.Printf("The data has been written to the database\n")
 }
-
+*/
 
 func main(){
 	/*--- Setup logger---*/
@@ -442,3 +428,4 @@ func main(){
 }
 
 // go build ServerTCP.go && ./ServerTCP.exe
+// go build ./client/client.go && ./client/client.exe 192.168.0.107
